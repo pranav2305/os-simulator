@@ -1,3 +1,87 @@
+@import url('https://fonts.googleapis.com/css?family=Codystar:300&display=swap');
+
+:root {
+  --background: #0B0C10;
+  --text: #c5c6c7;
+  --light-blue: #66fcf1;
+  --darker-blue: #45a29e;
+  --darkest-blue: #1f2833;
+}
+
+body {
+  background-color: var(--background);
+}
+
+p, h1, h2, h3, h4, h5, h6, a, label {
+  color: var(--text);
+}
+
+.home-title {
+  font-family: 'Codystar', cursive;
+  font-size: 3rem;
+  color: var(--light-blue);
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.row {
+  width: 100%;
+}
+
+.neons {
+   margin-top: 10rem;
+   text-align: center;
+}
+
+.neons h1 {
+  font-size: 9rem;
+  text-align: center;
+   font-weight: bold;
+  -webkit-animation: glow 1s ease-in-out infinite alternate;
+  -moz-animation: glow 1s ease-in-out infinite alternate;
+  animation: glow 1s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes glow {
+     from {
+      color: #fff;
+    text-shadow: 0 0 10px #00fff2, 0 0 20px #00fff2, 0 0 30px #00fff2, 0 0 40px #00fff2, 0 0 50px #00fff2, 0 0 60px #00fff2, 0 0 70px #00fff2, 0 0 90px #00fff2;
+  }
+  
+  to {
+     color: gray;
+    text-shadow: 0 0 20px #00fff2, 0 0 30px #00fff2, 0 0 40px #00fff2, 0 0 50px #00fff2, 0 0 60px #00fff2, 0 0 70px #00fff2, 0 0 80px #00fff2, 0 1 90px #00fff2;
+  }
+}
+
+/* Navbar */
+
+nav {
+  background-color: var(--background);
+}
+
+.navbar-brand {
+  color: var(--light-blue);
+  font-size: 1.5rem;
+}
+
+.nav-link, .dropdown-item {
+  color: var(--text);
+  font-size: 1.2rem;
+}
+
+.navbar-brand:hover, .nav-link:hover, .dropdown-item:hover {
+  color: var(--darker-blue);
+}
+
+.custom-toggler.navbar-toggler {
+  border-color: var(--light-blue);
+}
+
+.dropdown-menu {
+  background-color: var(--darkest-blue);
+}
+
 /* Process Scheduling */
 
 #gantt-chart {
