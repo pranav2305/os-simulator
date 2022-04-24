@@ -17,7 +17,7 @@ $(document).ready(function () {
         hrrn();
         var i = 0;
         var totalTime = sequence[total].start;
-        pixel = parseInt(600 / totalTime);
+        pixel = parseInt(550 / totalTime);
         var containerWidth = pixel * totalTime + 2;
         $('#gantt-chart').css('width', containerWidth + 'px');
         // displayBlock(i);
@@ -117,7 +117,6 @@ $(document).ready(function () {
 
     function displayBlock(i) {
         if (i == total) {
-            document.getElementById("ptab").style.display = 'block';
             drawTable(0);
             return;
         }
@@ -130,7 +129,7 @@ $(document).ready(function () {
             $('#gantt-chart').append('<div class="block" id="process-' + sequence[i].start + '">P-' + sequence[i].n + '<div class="bottom">' + sequence[i + 1].start + '</div></div>');
         }
         $('#process-' + sequence[i].start).css('width', blockWidth);
-        $('#process-' + sequence[i].start).fadeIn('slow', function () {
+        $('#process-' + sequence[i].start).hide().fadeIn('slow', function () {
             displayBlock(i + 1);
         });
     }

@@ -1,18 +1,18 @@
 @import url('https://fonts.googleapis.com/css?family=Codystar:300&display=swap');
 
 :root {
-  --background: #0B0C10;
-  --text: #c5c6c7;
-  --light-blue: #66fcf1;
-  --darker-blue: #45a29e;
-  --darkest-blue: #1f2833;
+  --background: rgb(11, 12, 16);
+  --text: rgb(196, 198, 199);
+  --light-blue: rgb(102, 252, 241);
+  --darker-blue: rgb(69, 162, 158);
+  --darkest-blue: rgb(31, 40, 51);
 }
 
 body {
   background-color: var(--background);
 }
 
-p, h1, h2, h3, h4, h5, h6, a, label {
+p, h1, h2, h3, h4, h5, h6, a, label, td, th{
   color: var(--text);
 }
 
@@ -40,6 +40,90 @@ p, h1, h2, h3, h4, h5, h6, a, label {
   -webkit-animation: glow 1s ease-in-out infinite alternate;
   -moz-animation: glow 1s ease-in-out infinite alternate;
   animation: glow 1s ease-in-out infinite alternate;
+}
+
+.main-container {
+  width: 90%;
+  max-width: 1500px;
+  margin: auto;
+  margin-top: 2rem;
+}
+
+.card-container {
+  background-color: var(--darkest-blue);
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 8px 16px 0 rgba(69, 162, 158, .2);
+  margin: 1.5rem auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  flex-grow: 1;
+}
+
+.input-div {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  width: 80%;
+  margin-bottom: 1rem;
+}
+
+.button-div {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  width: 80%;
+}
+
+.button-div button {
+  color: var(--text);
+  font-size: 1.2rem;
+  border: solid 2px var(--darker-blue);
+  margin-left: 1rem;
+  border-radius: 1.3rem;
+}
+
+.button-div button:hover {
+  background-color: var(--light-blue);
+  color: var(--background);
+}
+
+.button-div button:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.input-div input {
+  padding: 0.2rem;
+  font-size: 1.2rem;
+  width: 60%;
+  min-width: 15rem;
+}
+
+.input-div label {
+  font-size: 1.5rem;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.filename {
+  color: #6f9cc8;
+}
+
+.user {
+  color: #9cff3f;
 }
 
 @-webkit-keyframes glow {
@@ -74,6 +158,10 @@ nav {
   color: var(--darker-blue);
 }
 
+.nav-link:focus {
+  color: var(--darker-blue);
+}
+
 .custom-toggler.navbar-toggler {
   border-color: var(--light-blue);
 }
@@ -84,20 +172,48 @@ nav {
 
 /* Process Scheduling */
 
+.ps_table {
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.panel-content {
+  width: 100%;
+}
+
 #gantt-chart {
   margin: auto;
-  width: 600px;
+  width: 100%;
   height: 100px;
   position: relative;
-  border: 1px solid black;
+  border: 1px solid var(--text);
+  border-radius: 1rem;
+}
+
+#bar-chart-container {
+  color: var(--text);
 }
 
 .block {
   position: relative;
-  display: none;
-  border-right: 1px solid black;
+  /* display: none; */
+  border-right: 1px solid var(--text);
   float: left;
-  text-align: center;
   background-color: rgba(112, 128, 144, 0.44);
   height: 98px;
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.block:first-child {
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+}
+
+.block:last-child {
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 1rem;
 }

@@ -1,5 +1,9 @@
 $(document).ready(function () {
-    $('#inp').append(`<input type="number" min="0" id="tq" placeholder="Time quantum"></input>`);
+    document.getElementById('tq').style.display = 'inline-block';
+    document.getElementById('tq-label').style.display = 'inline-block';
+    document.getElementById('bar-chart-container').style.display = 'block';
+    document.getElementById('result-row').style.display = 'none';
+    document.getElementById('gantt-div').classList.remove('d-flex');
 
     $('#start').click(function () {
         tq = parseInt(document.getElementById("tq").value);
@@ -95,12 +99,14 @@ $(document).ready(function () {
                         backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850", "#ff6666", "#ffc34d"],
                         data: [average_wt_fcfs, average_wt_sjf, average_wt_srtf, average_wt_priority, average_wt_prnonpre, average_wt_ljf, average_wt_lrtf]
                     }
-                ]
+                ],
             },
             options: {
                 title: {
                     display: true,
-                    text: 'Average waiting Times'
+                    text: 'Average waiting Times',
+                    fontColor: "rgb(196, 198, 199)",
+                    fontSize: 20
                 },
                 scales: {
                     yAxes: [{
@@ -108,8 +114,8 @@ $(document).ready(function () {
                             beginAtZero: true
                         }
                     }]
-                }
-            }
+                },
+            },
         });
     }
     Q = [];
@@ -975,7 +981,7 @@ $(document).ready(function () {
         var processName = sequence[i].n;
         $('#gantt-chart').append('<div class="block" id="process-' + sequence[i].start + '">P-' + sequence[i].n + '<div class="bottom">' + sequence[i + 1].start + '</div></div>');
         $('#process-' + sequence[i].start).css('width', blockWidth);
-        $('#process-' + sequence[i].start).fadeIn('slow', function () {
+        $('#process-' + sequence[i].start).hide().fadeIn('slow', function () {
             displayBlock(i + 1);
         });
     }

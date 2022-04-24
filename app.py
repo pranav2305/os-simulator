@@ -13,14 +13,14 @@ def index():
 def team():
     return render_template('team.html')
 
-@app.route('/sys-calls')
-def sys_calls():
-  return render_template('sys_call/sys_call.html')
+# @app.route('/sys-calls')
+# def sys_calls():
+#   return render_template('sys_call/sys_call.html')
     
 
 @app.route('/deadlock/bankers/', methods=['GET'])
 def d_bankers():
-    return render_template('deadlock/bankers.html')
+    return render_template('deadlock/bankers.html', algo='bankers')
 
 @app.route('/disk-scheduling', methods=['GET'])
 def disk_scheduling():
@@ -28,31 +28,31 @@ def disk_scheduling():
 
 @app.route('/disk-scheduling/cscan', methods=['GET'])
 def ds_cscan():
-    return render_template('disk_scheduling/cscan.html', algo='CSCAN')
+    return render_template('disk_scheduling/cscan.html', algo='csan')
 
 @app.route('/disk-scheduling/fcfs', methods=['GET'])
 def ds_fcfs():
-    return render_template('disk_scheduling/fcfs.html', algo='FCFS')
+    return render_template('disk_scheduling/fcfs.html', algo='fcfs')
 
 @app.route('/disk-scheduling/scan', methods=['GET'])
 def ds_scan():
-    return render_template('disk_scheduling/scan.html', algo='SCAN')
+    return render_template('disk_scheduling/scan.html', algo='scan')
 
 @app.route('/disk-scheduling/look', methods=['GET'])
 def ds_look():
-    return render_template('disk_scheduling/look.html', algo='LOOK')
+    return render_template('disk_scheduling/look.html', algo='look')
 
 @app.route('/disk-scheduling/clook', methods=['GET'])
 def ds_clook():
-    return render_template('disk_scheduling/clook.html', algo='CLOOK')
+    return render_template('disk_scheduling/clook.html', algo='clook')
 
 @app.route('/disk-scheduling/sstf', methods=['GET'])
 def ds_sstf():
-    return render_template('disk_scheduling/sstf.html', algo='SSTF')
+    return render_template('disk_scheduling/sstf.html', algo='sstf')
 
 @app.route('/disk-scheduling/compare', methods=['GET'])
 def ds_compare():
-    return render_template('disk_scheduling/compare.html', algo='SSTF')
+    return render_template('disk_scheduling/compare.html', algo='comparison')
 
 @app.route('/file-allocation', methods=['GET'])
 def file_allocation():
@@ -60,15 +60,15 @@ def file_allocation():
 
 @app.route('/file-allocation/indexed', methods=['GET'])
 def fa_indexed():
-    return render_template('file_allocation/indexed.html', algo='Indexed')
+    return render_template('file_allocation/indexed.html', algo='indexed')
 
 @app.route('/file-allocation/linked', methods=['GET'])
 def fa_linked():
-    return render_template('file_allocation/linked.html', algo='Linked')
+    return render_template('file_allocation/linked.html', algo='linked')
 
 @app.route('/file-allocation/sequential', methods=['GET'])
 def fa_sequential():
-    return render_template('file_allocation/sequential.html', algo='Sequential')
+    return render_template('file_allocation/sequential.html', algo='sequential')
 
 @app.route('/memory-allocation', methods=['GET'])
 def memory_allocation():
@@ -80,15 +80,15 @@ def memory_allocation_mft():
 
 @app.route('/memory-allocation/mft/best-fit', methods=['GET'])
 def mft_best_fit():
-    return render_template('memory_allocation/mft/best_fit.html', algo='Best Fit')
+    return render_template('memory_allocation/mft/best_fit.html', algo='best-fit')
 
 @app.route('/memory-allocation/mft/first-fit', methods=['GET'])
 def mft_first_fit():
-    return render_template('memory_allocation/mft/first_fit.html', algo='First Fit')
+    return render_template('memory_allocation/mft/first_fit.html', algo='first-fit')
 
 @app.route('/memory-allocation/mft/worst-fit', methods=['GET'])
 def mft_worst_fit():
-    return render_template('memory_allocation/mft/worst_fit.html', algo='Worst Fit')
+    return render_template('memory_allocation/mft/worst_fit.html', algo='worst-fit')
 
 @app.route('/memory-allocation/mvt/', methods=['GET'])
 def memory_allocation_mvt():
@@ -96,15 +96,15 @@ def memory_allocation_mvt():
 
 @app.route('/memory-allocation/mvt/best-fit', methods=['GET'])
 def mvt_best_fit():
-    return render_template('memory_allocation/mvt/best_fit.html', algo='Best Fit')
+    return render_template('memory_allocation/mvt/best_fit.html', algo='best-fit')
 
 @app.route('/memory-allocation/mvt/first-fit', methods=['GET'])
 def mvt_first_fit():
-    return render_template('memory_allocation/mvt/first_fit.html', algo='First Fit')
+    return render_template('memory_allocation/mvt/first_fit.html', algo='first-fit')
 
 @app.route('/memory-allocation/mvt/worst-fit', methods=['GET'])
 def mvt_worst_fit():
-    return render_template('memory_allocation/mvt/worst_fit.html', algo='Worst Fit')
+    return render_template('memory_allocation/mvt/worst_fit.html', algo='worst-fit')
 
 @app.route('/page-replacement', methods=['GET'])
 def page_replacement():
@@ -112,15 +112,15 @@ def page_replacement():
 
 @app.route('/page-replacement/fifo', methods=['GET'])
 def pa_fifo():
-    return render_template('page_replacement/fifo.html')
+    return render_template('page_replacement/fifo.html', algo='fifo')
 
 @app.route('/page-replacement/lru', methods=['GET'])
 def pa_lru():
-    return render_template('page_replacement/lru.html')
+    return render_template('page_replacement/lru.html', algo='lru')
 
 @app.route('/page-replacement/optimal', methods=['GET'])
 def pa_optimal():
-    return render_template('page_replacement/optimal.html')
+    return render_template('page_replacement/optimal.html', algo='optimal')
 
 # @app.route('/paging', methods=['GET'])
 # def paging():
@@ -140,35 +140,35 @@ def process_scheduling():
 
 @app.route('/process-scheduling/fcfs', methods=['GET'])
 def ps_fsfc():
-  return render_template('process_scheduling/fcfs.html', algo='FCFS')
+  return render_template('process_scheduling/fcfs.html', algo='fcfs')
 
 @app.route('/process-scheduling/priority', methods=['GET'])
 def ps_priority():
-  return render_template('process_scheduling/priority.html', algo='Priority')
+  return render_template('process_scheduling/priority.html', algo='priority')
 
 @app.route('/process-scheduling/round-robin', methods=['GET'])
 def ps_round_robin():
-  return render_template('process_scheduling/round_robin.html', algo='Round Robin')
+  return render_template('process_scheduling/round_robin.html', algo='round-robin')
 
 @app.route('/process-scheduling/sjf', methods=['GET'])
 def ps_sjf():
-  return render_template('process_scheduling/sjf.html', algo='SJF')
+  return render_template('process_scheduling/sjf.html', algo='sjf')
 
 @app.route('/process-scheduling/ljf', methods=['GET'])
 def ps_ljf():
-  return render_template('process_scheduling/ljf.html', algo='LJF')
+  return render_template('process_scheduling/ljf.html', algo='ljf')
 
 @app.route('/process-scheduling/srtf', methods=['GET'])
 def ps_srtf():
-  return render_template('process_scheduling/srtf.html', algo='SRTF')
+  return render_template('process_scheduling/srtf.html', algo='srtf')
 
 @app.route('/process-scheduling/hrrn', methods=['GET'])
 def ps_hrrn():
-  return render_template('process_scheduling/hrrn.html', algo='HRRN')
+  return render_template('process_scheduling/hrrn.html', algo='hrrn')
   
 @app.route('/process-scheduling/compare', methods=['GET'])
 def ps_compare():
-  return render_template('process_scheduling/compare.html', algo='Comparison')
+  return render_template('process_scheduling/compare.html', algo='comparison')
 
 @app.route('/process-sync', methods=['GET'])
 def process_sync():

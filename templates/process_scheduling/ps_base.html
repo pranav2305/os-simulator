@@ -11,76 +11,109 @@
 {% endblock %}
 
 {% block style %}
-#priority,
-#ep th:nth-child(4),
-#ep td:nth-child(4) {
-  display: none;
-}
+  #priority,
+  #ep th:nth-child(4),
+  #ep td:nth-child(4),
+  #tq,
+  #bar-chart-container,
+  #priority-label,
+  #tq-label {
+    display: none;
+  }
+  {% block algo_style %}
+  {% endblock %}
 {% endblock %}
 
 {% block body %}
-  <h1>Process Scheduling - {{ algo }}</h1>
+  <div class="main-container">
+  <h1 class="page-heading"><span class="user">os_simulator@cs252</span>:<span class="filename">~/process_scheduling/{{ algo }}</span></h1>
   <section>
-    <h2>Wiki</h2>
     {% block wiki %}
     {% endblock %}
   </section>
   <section>
-    <h2>Simulation</h2>
-    <div class="container">
-      <div class="container row">
-        <div class="col-12 col-md-6" id="inp">
-          <h3>Processes</h3>
-          <table id="ep" class="table table-bordered">
-            <thead>
-              <tr>
-                <th>P. No.</th>
-                <th>AT</th>
-                <th>BT</th>
-                <th>Priority</th>  
-              </tr>
-            </thead>
-            <tbody id="ept">
-            </tbody>
-          </table>
-          <input type='number' min="0" id='at1' placeholder="Arrival time"></input>
-          <input type='number' min="0" id='bt1' placeholder="Burst time"></input>
-          <input type='hidden' min="0" id='io' value="0" placeholder="io time"></input>
-          <input type='hidden' min="0" id='bt2' value="0" placeholder="burst time 2"></input>
-          <input type='number' min="0" id='priority' placeholder="Priority"></input>
-          <button id="add" class="btn">Add</button>
-          <button id="start" class="btn">Start</button>
-        </div>
-        <div class="col-12 col-md-6" id="gantt-div">
-          <h2>Gantt Chart</h2>
-          <div id="gantt-chart"></div>
-        </div>
-      </div>
-      <div class="container row">
-        <div class="col-12 col-md-6">
-          <div class="panel-content">
-            <table id="ptab" class="table table-bordered" style="width :600px">
+      <div class="row">
+        <div class="col-12 col-md-6 d-flex flex-column" id="inp">
+          <div class="card-container input-container">
+              <div class="input-div">
+                <label for="at1">Arrival Time: </label>
+                <input type='number' min="0" id='at1' placeholder="Arrival time"></input>
+              </div>
+              <div class="input-div">
+                <label for="bt1">Burst Time: </label>
+                <input type='number' min="0" id='bt1' placeholder="Burst time"></input>
+              </div>
+              <!-- <label for="io">I/O Time: </label> -->
+              <input type='hidden' min="0" id='io' value="0" placeholder="I/O time"></input>
+              <input type='hidden' min="0" id='bt2' value="0" placeholder="Burst time 2"></input>
+              <div class="input-div">
+                <label for="priority" id="priority-label">Priority: </label>
+                <input type='number' min="0" id='priority' placeholder="Priority"></input>
+              </div> 
+              <div class="input-div">
+                <label for="tq" id="tq-label">Time quantum: </label>
+                <input type="number" min="0" id="tq" placeholder="Time quantum"></input>
+              </div>
+              <div class="button-div">
+                <button id="add" class="btn">Add</button>
+                <button id="start" class="btn">Start</button>
+              </div>
+          </div>
+          <div class="card-container">
+            <h3>Processes</h3>
+            <table id="ep" class="table table-bordered ps-table">
               <thead>
-              <tr id="thead">
-              <th>P. No.</th>
-              <th>AT</th>
-              <th>BT</th>
-              <th>WT</th>
-              <th>TaT</th>
-              </tr>
-              <tbody id="ptable">
-              </tbody>
+                <tr>
+                  <th>P. No.</th>
+                  <th>AT</th>
+                  <th>BT</th>
+                  <th>Priority</th>  
+                </tr>
               </thead>
+              <tbody id="ept">
+              </tbody>
             </table>
           </div>
         </div>
-        <div class="col-12 col-md-6" style="text-align: center;">
-          <p id="average" align="center" style="background-color: rgb(150,150,150);"></p>
+        <div class="col-12 col-md-6 d-flex" id="gantt-div">
+          <div class="card-container">
+            <h2>Gantt Chart</h2>
+            <div id="gantt-chart"></div>
+          </div>
         </div>
       </div>
+      <div class="row" id="result-row">
+        <div class="col-12 col-md-6 d-flex">
+          <div class="card-container">
+            <div class="panel-content">
+              <table id="ptab" class="table table-bordered">
+                <thead>
+                <tr id="thead">
+                <th>P. No.</th>
+                <th>AT</th>
+                <th>BT</th>
+                <th>WT</th>
+                <th>TaT</th>
+                </tr>
+                <tbody id="ptable">
+                </tbody>
+                </thead>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 d-flex" style="text-align: center;">
+          <div class="card-container">
+            <p id="average" align="center"></p>
+          </div>
+        </div>
     </div>
-    <canvas id="bar-chart" width="800" height="450"></canvas>
+    <div class="card-container" id="bar-chart-container">
+      <h2 class="sub-heading">Bar Chart </h2>
+      <canvas id="bar-chart" width="800" height="450"></canvas>
+    </div>
     {% block sim %}
     {% endblock %}
   </section>
+</div>
 {% endblock %}
