@@ -81,19 +81,18 @@ var k=0;
 	}
 txt= " ";var real;var m=0;
 var $table=$("<table border='1'></table>");
-$table.addClass('table table-striped');
+$table.addClass('table table-bordered');
 var $tbody = $("<tbody></tbody>");
 	for ( i=0; i<row;i++)
 	  { 
         var line =$("<tr></tr>");
-        // line.css({'background-color': getRandomColor()});  
 	  	for(j=0; j<col;j++){
        
         if(i==row-1) {
            	
 				
                 if(("PH".localeCompare(pages[i][j])==0)){	
-					line.append('<td style="color:green">'+'PH'+'</td>');
+					line.append('<td style="color:#9cff3f">'+'PH'+'</td>');
                 }
                 else{
 					line.append('<td style="color:red">'+'PF'+'</td>');
@@ -115,28 +114,7 @@ var $tbody = $("<tbody></tbody>");
     $('#table-div').empty();
 	  $table.appendTo($("#table-div"));
 	  $("#sp1").html('<p style="text-align:center">'+"<b>The no of page faults :</b>"+"   "+'<span style="color:red">'+pf+'</span>'+'</p>')
-	  $("#sp2").html('<p style="text-align:center">'+"<b>The no of page hits :</b>"+"   "+'<span style="color:green">'+ph+'</span>'+'</p>')
-      function getRandomColor() {
-		m=m+1;
-		var color ='';
-		  if(m==1){
-			  color='blue';
-		  }
-		  if(m==2){
-			  color='yellow';
-		  }
-		  if(m==3){
-			  color='pink';
-		  }
-		  if(m==4){
-			  color='white';
-		  }
-		
-		return color;
-		 }
-		 console.log(m);
+	  $("#sp2").html('<p style="text-align:center">'+"<b>The no of page hits :</b>"+"   "+'<span style="color:#9cff3f">'+ph+'</span>'+'</p>')
 txt = txt + "\n";
-console.log($table)
-console.log(txt);
-console.log(txt.length);
+document.getElementById("pr-table-div").style.display = "block";
 });

@@ -16,6 +16,10 @@ p, h1, h2, h3, h4, h5, h6, a, label, td, th{
   color: var(--text);
 }
 
+td, th {
+  text-align: center;
+}
+
 .home-title {
   font-family: 'Codystar', cursive;
   font-size: 3rem;
@@ -88,6 +92,8 @@ p, h1, h2, h3, h4, h5, h6, a, label, td, th{
   border: solid 2px var(--darker-blue);
   margin-left: 1rem;
   border-radius: 1.3rem;
+  padding: .3rem .8rem;
+  background-color: var(--darkest-blue);
 }
 
 .button-div button:hover {
@@ -216,4 +222,10 @@ nav {
 .block:last-child {
   border-top-right-radius: 1rem;
   border-bottom-right-radius: 1rem;
+}
+
+/* Page Replacement */
+
+#pr-table-div {
+  display: none;
 }

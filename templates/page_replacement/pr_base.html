@@ -10,30 +10,31 @@
 {% endblock %}
 
 {% block body %}
-<h1>Page Replacement - {{ algo }}</h1>
+<div class="main-container">
+  <h1 class="page-heading"><span class="user">os_simulator@cs252</span>:<span class="filename">~/page_replacement/{{ algo }}</span></h1>
 <section>
-  <h2>Wiki</h2>
-  {% block wiki %}
-  {% endblock %}
-</section>
-<section>
-  <h2>Simulation</h2>
     <form>
-    <div class"container" >
-        <div class="form-group row" style="margin-left:40px;width:25vw;display:block">
-            <input type = "number" id="frames"class="form-control" placeholder="Enter the number of frames:">
+      <div class="card-container">
+        <div class="input-div">
+          <label for="frames">Enter the number of frames: </label>
+          <input type = "number" id="frames" placeholder="Number of frames">
         </div>
-
-        <div class="form-group row" style="margin-left:40px;width:25vw;display:block">
-                <input type = "text" id="rs" class="form-control" placeholder="Enter the Reference string:">
+        <div class="input-div">
+          <label for="rs">Enter the Reference string: </label>
+                <input type = "text" id="rs" placeholder="Reference string">
         </div>
-            <input type = "button" style="margin-left:40px; margin-bottom:20px" class="btn btn-danger btn-lg" id="compute-btn" value = "Compute">
-		<div id="table-div" class="table-responsive" style="width:80vw;margin:auto;text-align:center"></div>
-		<div id="sp1"></div>
-		<div id="sp2"></div>
-    </div>
-</form>
+        <div class="button-div">
+          <button type = "button" id="compute-btn" value = "Compute">Compute</button> 
+        </div>
+      </div>
+      <div class="card-container" id="pr-table-div">
+        <div id="table-div" class="table table-responsive"></div>
+        <div id="sp1"></div>
+        <div id="sp2"></div>
+      </div>
+    </form>
     {% block sim %}
     {% endblock %}
 </section> 
+</div>
 {% endblock %}
