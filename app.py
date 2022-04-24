@@ -161,10 +161,6 @@ def ps_ljf():
 @app.route('/process-scheduling/srtf', methods=['GET'])
 def ps_srtf():
   return render_template('process_scheduling/srtf.html', algo='srtf')
-
-@app.route('/process-scheduling/hrrn', methods=['GET'])
-def ps_hrrn():
-  return render_template('process_scheduling/hrrn.html', algo='hrrn')
   
 @app.route('/process-scheduling/compare', methods=['GET'])
 def ps_compare():

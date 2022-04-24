@@ -151,13 +151,13 @@ nav {
 }
 
 .navbar-brand {
-  color: var(--light-blue);
-  font-size: 1.5rem;
+  color: var(--text);
+  font-size: 1.1rem;
 }
 
 .nav-link, .dropdown-item {
   color: var(--text);
-  font-size: 1.2rem;
+  font-size: 1.1rem;
 }
 
 .navbar-brand:hover, .nav-link:hover, .dropdown-item:hover {
