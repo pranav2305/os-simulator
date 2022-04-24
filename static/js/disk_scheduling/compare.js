@@ -121,7 +121,6 @@ $(document).ready(function () {
         for (i = in_arr.length - 1; i >= 0; --i) {
             var p = parseInt(in_arr[i]);
             if (p < head) {
-                console.log(i + 1)
                 flag = i + 1;
                 break;
             }
@@ -170,12 +169,12 @@ $(document).ready(function () {
         var done = [];		//a new empty array
         var flag;
         //make done as 0
-        for (i = 0; i < in_arr.length - 2; ++i)		//-2 because there are 2 checkboxes , do -8 if min and max are included
+        for (i = 0; i < in_arr.length; ++i)		//-2 because there are 2 checkboxes , do -8 if min and max are included
             done.push(0);
 
 
-        for (var j = 1; j <= in_arr.length - 2; ++j) {
-            for (var i = 1; i <= in_arr.length - 2; ++i) {
+        for (var j = 1; j <= in_arr.length; ++j) {
+            for (var i = 1; i <= in_arr.length; ++i) {
                 diff = head - in_arr[i];
 
                 if (diff < 0)
@@ -194,7 +193,7 @@ $(document).ready(function () {
             done[flag - 1] = 1;
             min = 9999;
         }
-        return sum;
+        return sum-9999;
     }
 
     window.onload = function () {
@@ -211,35 +210,36 @@ $(document).ready(function () {
 
     function show_graph(fcfs,sstf,scan,cscan,look,clook)
     {
-        
-        var chart = new CanvasJS.Chart("chartContainer", {
-        title:{
-            text: "RESULTS OF DISK SCHEDULING ALGORITHMS"              
-        },
-        
-        data: [              
-        {
-            // Change type to, "line", "splineArea", etc.
-            type: "column",				
-            dataPoints: [
-                { label: "FCFS",  y: fcfs  },
-                { label: "SSTF", y: sstf  },
-                { label: "SCAN", y: scan  },
-                { label: "CSCAN",  y: cscan  },
-                { label: "LOOK",  y: look  },
-                { label: "CLOOK",  y: clook  }
-            ]
-        }
-        ],
 
-        axisY:{
-            title:"Total Head Movement"
-        },
-
-        animationEnabled : true,
-        animationDuration :6000,
-        colorSet: "myColors"
-    });
-    chart.render();
+        var chart = new Chart(document.getElementById("bar-chart"), {
+            type: 'bar',
+            data: {
+                labels: ["FCFS", "SSTF", "SCAN", "CSCAN", "LOOK", "CLOOK"],
+                datasets: [
+                    {
+                        label: "Total Head Movement",
+                        backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850", "#ff6666"],
+                        data: [fcfs, sstf, scan, cscan, look, clook]
+                    }
+                ],
+            },
+            options: {
+                title: {
+                    display: true,
+                    text: 'Results of Disk Scheduling Algorithms',
+                    fontColor: "rgb(196, 198, 199)",
+                    fontSize: 20
+                },
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                },
+            },
+        });
+        document.getElementById("bar-chart").style.display = "block";
+    document.getElementById("output-container").style.display = "flex";
     }
 });

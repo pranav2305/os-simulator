@@ -20,6 +20,14 @@ td, th {
   text-align: center;
 }
 
+.page-heading {
+  font-size: 2rem;
+}
+
+.sub-heading {
+  margin-bottom: 1.5rem;
+}
+
 .home-title {
   font-family: 'Codystar', cursive;
   font-size: 3rem;
@@ -227,5 +235,15 @@ nav {
 /* Page Replacement */
 
 #pr-table-div {
+  display: none;
+}
+
+/* Disk Scheduling */
+
+#output-container {
+  display: none;
+}
+
+#bar-chart {
   display: none;
 }

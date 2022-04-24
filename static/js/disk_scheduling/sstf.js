@@ -43,12 +43,12 @@ $(document).ready(function () {
         var done = [];		//a new empty array
         var flag;
         //make done as 0
-        for (i = 0; i < in_arr.length - 2; ++i)		//-2 because there are 2 checkboxes , do -8 if min and max are included
+        for (i = 0; i < in_arr.length; ++i)		//-2 because there are 2 checkboxes , do -8 if min and max are included
             done.push(0);
 
 
-        for (var j = 1; j <= in_arr.length - 2; ++j) {
-            for (var i = 1; i <= in_arr.length - 2; ++i) {
+        for (var j = 1; j <= in_arr.length; ++j) {
+            for (var i = 1; i <= in_arr.length; ++i) {
                 diff = head - in_arr[i];
 
                 if (diff < 0)
@@ -69,7 +69,7 @@ $(document).ready(function () {
             min = 9999;
         }
         allocate_sstf();
-        return sum;
+        return sum-9999;
     });
 
     function allocate_sstf() {
@@ -91,7 +91,7 @@ $(document).ready(function () {
             id: "chartContainer",
             output: "svg",
             height: 500,
-            width: "80%",
+            width: "99%",
             data: {
                 "type": "line",
                 "title": {
@@ -102,5 +102,6 @@ $(document).ready(function () {
                 ]
             }
         });
+        document.getElementById("output-container").style.display = "block";
     }
 });

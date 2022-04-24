@@ -100,7 +100,7 @@ $(document).ready(function () {
     id:"chartContainer",
     output:"svg",
     height:500,
-    width:"80%",
+    width:"99%",
     data:{
         "type":"line",
         "title":{
@@ -111,5 +111,6 @@ $(document).ready(function () {
         ]
     }
     });	
+    document.getElementById("output-container").style.display = "block";
 }
 });
