@@ -83,6 +83,7 @@ td, th {
   justify-content: space-between;
   width: 80%;
   margin-bottom: 1rem;
+  row-gap: 0.5rem;
 }
 
 .button-div {
@@ -92,6 +93,7 @@ td, th {
   align-items: center;
   justify-content: flex-end;
   width: 80%;
+  row-gap: 1rem;
 }
 
 .button-div button {
@@ -246,4 +248,17 @@ nav {
 
 #bar-chart {
   display: none;
+}
+
+/* MFT */
+
+#parts-size-form,
+#add-rem-pro-container,
+#canvas-container,
+#q-table-container {
+  display: none;
+}
+
+#input-q-table {
+  width: 100%;
 }
