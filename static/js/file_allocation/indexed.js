@@ -20,6 +20,7 @@ $(document).ready(function () {
             remaining = memSize;
             vis2 = document.getElementById("vis2");
             vis2.style.display = "flex";
+            document.getElementById('indexed-output').innerHTML = ''
         }
         else {
             alert("Please enter valid size!");
@@ -92,17 +93,6 @@ $(document).ready(function () {
             </table>
         `;
         document.getElementById('indexed-output').appendChild(file);
-        // const file = document.createElement('div');
-        // const fileName = document.createElement('p');
-        // fileName.textContent = name;
-        // file.append(fileName);
-        // const indexList = document.createElement('ul');
-        // for (var i = 0; i < allocations.length; i++) {
-        //     const block = document.createElement('li');
-        //     block.textContent = `${i} -> ${allocations[i]}`;
-        //     indexList.append(block);
-        // }
-        // file.append(indexList);
-        // document.getElementById("idxd").append(file);
+        document.getElementById('fa-output').style.display = "flex";
     }
 });

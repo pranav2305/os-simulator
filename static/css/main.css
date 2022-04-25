@@ -306,3 +306,7 @@ nav {
   row-gap: 1rem;
   column-gap: 1rem;
 }
+
+.fa-table {
+  width:100%;
+}

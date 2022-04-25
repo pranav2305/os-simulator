@@ -91,18 +91,56 @@ $(document).ready(function () {
   });
   
   function showOutput() {
-      var str = "";
-      var j;
-      document.getElementById("op1").innerHTML = "File	Start	End    Size";
-      for (var i = 0; i < count; i++) {
-          str += "<br />" + file_names[i] + "   " + starts[i] + "    " + ends[i] + "    " + file_sizes[i] + "	";
-          for (j = 0; j < memSize; j++) {
-              if (parseInt(allocations[j]) == i + 1) {
-                  str += "-->" + j;
-              }
-          }
-      }
-      document.getElementById("op").innerHTML = str;
+    const file = document.createElement('div');
+    document.getElementById('fa-output').innerHTML = '';
+    file.classList.add('table-responsive');
+    file.classList.add('fa-table');
+    var table_html = 
+    `
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Filename</th>
+                    <th>Start</th>
+                    <th>End</th>
+                    <th>Size</th>
+                    <th>Block Path</th>
+                </tr>
+            </thead>
+            <tbody>
+    `
+    for (var i = 0; i < count; i++) {
+        table_html += 
+        `
+        <tr>
+            <td>${file_names[i]}</td>
+            <td>${starts[i]}</td>
+            <td>${ends[i]}</td>
+            <td>${file_sizes[i]}</td>
+            <td>
+        `
+        for (j = 0; j < memSize; j++) {
+            if (parseInt(allocations[j]) == i + 1) {
+                table_html += `
+                -->${j}
+                `;
+            }
+        }
+        table_html +=
+        `
+            </td>
+        </tr>
+        `;
+    }
+
+    table_html +=
+    `             
+            </tbody>
+        </table>
+    `;
+    file.innerHTML = table_html;
+    document.getElementById('fa-output').appendChild(file);
+    document.getElementById('fa-output').style.display = "flex";
   }
   
   function color() {
