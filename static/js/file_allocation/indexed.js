@@ -19,7 +19,7 @@ $(document).ready(function () {
             allocated = Array(memSize).fill(false);
             remaining = memSize;
             vis2 = document.getElementById("vis2");
-            vis2.style.display = "block";
+            vis2.style.display = "flex";
         }
         else {
             alert("Please enter valid size!");
@@ -58,16 +58,51 @@ $(document).ready(function () {
     
     function showOutput(name, allocations) {
         const file = document.createElement('div');
-        const fileName = document.createElement('p');
-        fileName.textContent = name;
-        file.append(fileName);
-        const indexList = document.createElement('ul');
-        for (var i = 0; i < allocations.length; i++) {
-            const block = document.createElement('li');
-            block.textContent = `${i} -> ${allocations[i]}`;
-            indexList.append(block);
-        }
-        file.append(indexList);
-        document.getElementById("idxd").append(file);
+        file.classList.add('table-responsive')
+        file.innerHTML = 
+
+        `
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th colspan=2>${name}</th>
+                    </tr>
+                    <tr>
+                        <th>Index</th>
+                        <th>Block Allocated</th>
+                    </tr>
+                </thead>
+                <tbody>
+        `
+
+        + 
+        
+        allocations.map((i, count) => `
+            <tr>
+                <td>${count}</td>
+                <td>${i}</td>
+            </tr>
+        `).join('') 
+
+        +
+
+        `
+                        
+                </tbody>
+            </table>
+        `;
+        document.getElementById('indexed-output').appendChild(file);
+        // const file = document.createElement('div');
+        // const fileName = document.createElement('p');
+        // fileName.textContent = name;
+        // file.append(fileName);
+        // const indexList = document.createElement('ul');
+        // for (var i = 0; i < allocations.length; i++) {
+        //     const block = document.createElement('li');
+        //     block.textContent = `${i} -> ${allocations[i]}`;
+        //     indexList.append(block);
+        // }
+        // file.append(indexList);
+        // document.getElementById("idxd").append(file);
     }
 });

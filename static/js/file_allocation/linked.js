@@ -16,7 +16,7 @@ $(document).ready(function () {
       memSize = document.getElementById("nof").value;
       if (memSize != "") {
           vis2 = document.getElementById("vis2");
-          vis2.style.display = "block";
+          vis2.style.display = "flex";
           used = new Array(parseInt(memSize));
           next = new Array(parseInt(memSize));
           remaining = parseInt(memSize);
