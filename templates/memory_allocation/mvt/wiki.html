@@ -5,17 +5,34 @@
 {% endblock %}
 
 {% block body %}
-<h1>Memory Allocation - MVT</h1>
-<section>
-  <h2>Wiki</h2>
-</section>
-<section>
-  <nav>
-    <ul>
-      <a href="first-fit"><li>First Fit</li></a>
-      <a href="worst-fit"><li>Worst Fit</li></a>
-      <a href="best-fit"><li>Best Fit</li></a>
-    </ul>  
-  </nav>
-</section>
+<div class="main-container">
+  <div class="mft-heading">
+    <h1 class="page-heading">
+      <span class="user">os_simulator@cs252</span>:<span class="filename"
+        >~/memory-allocation/mvt</span
+      >$
+    </h1>
+    <div class="algo-select">
+      <p class="page-heading">cd</p>
+      <div class="dropdown">
+        <button
+          class="dropdown-toggle mft-toggle page-heading"
+          type="button"
+          id="dropdownMenuButton1"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          select_algorithm
+        </button>
+        <ul
+          class="dropdown-menu mft-menu"
+          aria-labelledby="dropdownMenuButton1"
+        >
+          <li><a class="dropdown-item" href="first-fit">first_fit/</a></li>
+          <li><a class="dropdown-item" href="worst-fit">worst_fit/</a></li>
+          <li><a class="dropdown-item" href="best-fit">best_fit/</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
 {% endblock %}

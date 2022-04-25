@@ -1,50 +1,49 @@
 {% extends 'base.html' %}
 
 {% block link %}
-    {% block algo_link %}
-    {% endblock %}
+{% block algo_link %}
+{% endblock %}
 {% endblock %}
 
 {% block title %}
-    MVT - {{algo}}
+MVT - {{algo}}
 {% endblock %}
 
 {% block body %}
-<h1><a href="/memory-allocation/mvt/">MVT</a> - {{ algo }}</h1>
-<section>
-  <h2>Wiki</h2>
-  {% block wiki %}
-  {% endblock %}
-</section>
-<section>
-    <h2>Simulation</h2>
-    <div class="row">
-            <div class="col-md-3  m-5">
-                <div class="m-2">
-                    <div class="form-group">
+<div class="main-container">
+    <h1 class="page-heading"><span class="user">os_simulator@cs252</span>:<span class="filename">~/memory-allocation/mvt/{{ algo }}</span></h1>
+    <section>
+        <div class="row">
+            <div class="col-md-6 d-flex flex-column justify-content-around">
+                <div class="card-container">
+                    <div class="input-div">
                         <label>Size of memory: </label>
-                        <input type="text" class="form-control" id="mem-size" placeholder="Enter size of memory: ">
+                        <input type="text" id="mem-size" placeholder="Enter size of memory: ">
                     </div>
-                    <button type="submit" class="btn btn-primary" id="mem-size-btn">Go</button> 
-                </div>                
+                    <button type="submit" id="mem-size-btn">Go</button>
+                </div>
+                <div id="compaction" class="card-container">
+                </div>
+                <div class="card-container" id="q-table-container">
+                    <div id="input-q-table" class="table-responsive">
+                    </div>
+                </div>
             </div>
-            <div class="col-md-3 m-5">   
-                <div id="add-rem-pro-btns">
+            <div class="col-md-6 d-flex flex-column justify-content-around">
+                <div class="card-container" id="add-rem-pro-container">
+                    <div id="add-rem-pro-btns">
+                    </div>
+                    <div id="add-rem-pro">
+                    </div>
                 </div>
-                <div class="m-2" id="add-rem-pro">
-                </div>   
-                <div id="canvas" class="ml-5 mt-5">
-                </div>     
-            </div>    
-            <div class="col-md-3 m-5">
-                <div id="compaction">
+                <div class="card-container" id="canvas-container">
+                    <div id="canvas" class="ml-5 mt-5">
+                    </div>
                 </div>
-                <div id="input-q-table">
-                </div>        
-            </div>  
-    
-    {% block sim %}
-    {% endblock %}
-</section>
-{% endblock %}
+            </div>
 
+            {% block sim %}
+            {% endblock %}
+    </section>
+</div>
+{% endblock %}
