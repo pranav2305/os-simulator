@@ -3,7 +3,7 @@ var flag = 1, count = 0;
 $(document).ready(function () {
 	
     $('#writer').click(function writer() {
-document.getElementById("textarea").disabled = false;
+
         if(flag == 1){
             flag = 0;            
             document.getElementById("stop").style.visibility = 'visible';
@@ -140,7 +140,7 @@ document.getElementById("textarea").disabled = false;
             document.getElementById('textarea2').style.visibility = 'hidden';
         
         
-            alert("Cannot read while document is being modified!");   
+               
     });
     $('#stopread3').click(function stopread3() {
         
@@ -157,7 +157,7 @@ document.getElementById("textarea").disabled = false;
             document.getElementById('textarea').style.background = "#E0E0E0 ";
             document.getElementById('textarea3').style.visibility = 'hidden';
          
-            alert("Cannot read while document is being modified!");   
+               
     });
     $('#stopread4').click(function stopread4() {
         
