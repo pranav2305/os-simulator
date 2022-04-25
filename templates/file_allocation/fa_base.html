@@ -5,39 +5,57 @@
 {% endblock %}
 
 {% block style %}
-#vis2 {
+#vis2,
+#fa-canvas {
   display: none;
 }
 {% endblock %}
 
 {% block body %}
-  <h1>File Allocation - {{ algo }}</h1>
+<div class="main-container">
+  <h1 class="page-heading"><span class="user">os_simulator@cs252</span>:<span class="filename">~/file_allocs/{{ algo }}</span>$</h1>
   <section>
-    <h2>Wiki</h2>
-    {% block wiki %}
-    {% endblock %}
-  </section>
-  <section>
-    <h2>Simulation</h2>
     <div id="algo-div">
         <div class="visible1">
-            <p><strong>Enter the size of memory (number of blocks)</strong></p>
-            <input id="nof" type="number">
-            <button class="btn btn-light" id="find">Submit</button>
-            <a href="sequential.html" class="w3-button w3-black">Reset</a>
-            <div id="vis2">
-                <p>Please add file details</p>
-                File name:<input id="file_name" type="text">
-                File size (number of blocks):<input id="file_size" type="number">
-                <button class="btn btn-light" id="add">Add</button>
+            <div class="card-container">
+              <div class="input-div">
+                <label for="nof">Enter the size of memory (number of blocks)</label>
+                <input id="nof" type="number">
+              </div>
+              <div class="button-div">
+                <button id="find">Submit</button>
+              </div>
             </div>
-            <canvas id="can" width="1500" height="50" col></canvas>
-            <p id="op1"></p>
+            
+            <div class="card-container" id="vis2">
+                <p>Please add file details</p>
+                <div class="input-div">
+                  <label for="file_name">File name:</label>
+                  <input id="file_name" type="text">
+                </div>
+                <div class="input-div">
+                  <label for="file_size">File size (number of blocks):</label>
+                  <input id="file_size" type="number">
+                </div>
+                <div class="button-div">
+                  <button class="btn btn-light" id="add">Add</button>
+                </div>
+            </div>
+            <div class="card-container" id="fa-canvas">
+              <canvas id="can" height="25px" col></canvas>
+            </div>
+            <div class="card-container" id="fa-output">
+              <div id="indexed-output">
+
+              </div>
+            </div>
+            <!-- <p id="op1"></p>
             <p id="op"></p>
-            <div id="idxd"></div>
+            <div id="idxd"></div> -->
         </div>
     </div>
     {% block sim %}
     {% endblock %}
   </section>
+</div>
 {% endblock %}

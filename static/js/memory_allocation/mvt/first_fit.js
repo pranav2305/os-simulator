@@ -26,8 +26,10 @@ $(document).ready(function() {
 function startColumn2() {
     var htmlText = 
     `
-    <button type="submit" class="btn btn-primary" id="add-pro-btn">Add process</button>
-    <button type="submit" class="btn btn-primary" id="rem-pro-btn">Remove process</button>
+    <div class="button-div" style="justify-content: center;">
+        <button type="submit" id="add-pro-btn">Add process</button>
+        <button type="submit" id="rem-pro-btn">Remove process</button>
+    </div>
     `;
     $("#add-rem-pro-btns").html(htmlText);
     var htmlText = 
@@ -45,17 +47,20 @@ function startColumn2() {
             remProcessId();
         }); 
     });
-
+    document.getElementById("add-rem-pro-container").style.display = "flex";
+    document.getElementById("canvas-container").style.display = "flex";
 }
 
 function addProcessSize() {
     var htmlText =
     `
-    <div class="form-group">
+    <div class="input-div">
         <label>Size of process to be added: </label>
-        <input type="text" class="form-control" id="add-pro-size" placeholder="Enter size of process to be added">      
+        <input type="text" id="add-pro-size" placeholder="Enter size of process to be added">      
     </div>
-    <button type="submit" class="btn btn-primary" id="add-btn">Add</button>
+    <div class="button-div">
+        <button type="submit" id="add-btn">Add</button>
+    </div>
     `;
     $("#add-rem-pro").html(htmlText);
     $(document).ready(function() {
@@ -162,29 +167,31 @@ function drawPart() {
     var ctx=document.getElementById("myCanvas").getContext("2d");
     ctx.beginPath();
     ctx.rect(myCanvas_x_start, myCanvas_y_start, myCanvas_width, myCanvas_height);
-    ctx.fillStyle = "white";
+    ctx.fillStyle = "rgb(31, 40, 51)";
     ctx.fill();
     var i;
     for(i = 0; i < num_parts; i++) {
         ctx.beginPath();
         ctx.rect(myCanvas_x_start, myCanvas_y_start + part_start[i]*(500/total_mem_size), myCanvas_width, part_size[i]*(500/total_mem_size));
-        ctx.fillStyle = "green";
+        ctx.fillStyle = "#9cff3f";
         ctx.fill();
 
         ctx.font = "14px Arial bold";
         ctx.fillStyle = "black";
-        ctx.fillText("P-"+ String(part_pro_id[i]) + ", size: " + String(part_size[i]), 50, myCanvas_y_start + part_start[i]*(500/total_mem_size) + part_size[i]*(500/total_mem_size)/2);
+        ctx.fillText("P-"+ String(part_pro_id[i]), myCanvas_width / 2, myCanvas_y_start + part_start[i]*(500/total_mem_size) + part_size[i]*(500/total_mem_size)/2);
     }
 }
 
 function remProcessId() {
     var htmlText =
     `
-    <div class="form-group">
+    <div class="input-div">
         <label>Id of process to be removed: </label>
-        <input type="text" class="form-control" id="rem-pro-id" placeholder="Enter id of process to be removed">      
+        <input type="text" id="rem-pro-id" placeholder="Enter id of process to be removed">      
     </div>
-    <button type="submit" class="btn btn-primary" id="rem-btn">Remove</button>
+    <div class="button-div">
+        <button type="submit" id="rem-btn">Remove</button>
+    </div>
     `;
     $("#add-rem-pro").html(htmlText);
     $(document).ready(function() {
@@ -255,41 +262,32 @@ function removeFromQ(pro_id) {
 function drawInputQTable() {
     var htmlText = 
     `
-    <button type="submit" class="btn btn-primary md-3" id="compact-btn">Compact</button> 
-    <table>
-    <tr>
-        <th colspan="0">Input Queue</th>
-    </tr>
+    <div class="button-div" style="justify-content: center; margin-bottom: 1rem;">
+        <button type="submit" id="compact-btn">Compact</button> 
+    </div>
+    <table class="table table-bordered">
     <tr>
         <th>Process Id</th>
-    `;
-    for(var i = 0; i < input_q_size; i++)
-    {
-        htmlText += 
-        `
-        <td>` + input_q_pro_id[i] + `</td>
-        `;
-    }
-
-    htmlText += 
-    `
-    <tr>
         <th>Process Size</th>
+    </tr>
     `;
     for(var i = 0; i < input_q_size; i++)
     {
         htmlText += 
         `
-        <td>` + input_q_pro_size[i] + `</td>
+        <tr>
+            <td>` + input_q_pro_id[i] + `</td>
+            <td>` + input_q_pro_size[i] + `</td>
+        </tr>
         `;
     }
 
     htmlText += 
     `
-    </tr>
     </table>
     `;
     $("#input-q-table").html(htmlText);
+    document.getElementById('q-table-container').style.display = 'flex';
     $(document).ready(function() {
         $("#compact-btn").click(function(){
             Compact();

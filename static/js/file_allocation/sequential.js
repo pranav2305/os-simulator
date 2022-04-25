@@ -15,7 +15,7 @@ $(document).ready(function () {
       memSize = document.getElementById("nof").value;
       if (memSize != "") {
           vis2 = document.getElementById("vis2");
-          vis2.style.display = "block";
+          vis2.style.display = "flex";
       }
       else {
           alert("Please enter valid size!");
@@ -25,7 +25,7 @@ $(document).ready(function () {
   $('#add').click(function addFile() {
       if (count == 0) {
           for (var i = 0; i < 200; i++) {
-              colors[i] = color();
+              colors[i] = i%2==0 ? "red" : "#9cff3f";
               file_sizes[i] = 0;
               file_names[i] = "";
               starts[i] = 0;
@@ -57,20 +57,17 @@ $(document).ready(function () {
   });
   
   function showOutput() {
+      document.getElementById("fa-canvas").style.display = "flex";
+        canv.style.width = "100%";
       var str = "";
       ctx.fillStyle = "#f1f1f1";
       ctx.fillRect(0, 0, canv.width, canv.height);
       document.getElementById("op1").innerHTML = "File    Start    End     Size";
       for (var i = 0; i < count; i++) {
           str += file_names[i] + "________" + starts[i] + "________" + ends[i] + "________" + file_sizes[i] + "<br />";
+          ctx.font = "10px Arial";
           ctx.fillStyle = colors[i];
           ctx.fillRect(starts[i] * canv.width / memSize, 0, (ends[i] + 1 - starts[i]) * canv.width / memSize, canv.height);
-          if ((ends[i] - starts[i]) * canv.width / memSize > 30) {
-              ctx.font = "50px Georgia";
-          }
-          else {
-              ctx.font = "20px Georgia";
-          }
           ctx.strokeText(file_names[i], starts[i] * canv.width / memSize, canv.height * 3 / 4);
       }
       document.getElementById("op").innerHTML = str;

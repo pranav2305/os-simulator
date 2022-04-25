@@ -1,18 +1,33 @@
-{% extends 'base.html' %}
-
-{% block title %}
-  MFT
-{% endblock %}
-
-{% block body %}
+{% extends 'base.html' %} {% block title %} MFT {% endblock %} {% block body %}
 <div class="main-container">
-  <h1 class="page-heading"><span class="user">os_simulator@cs252</span>:<span class="filename">~/memory-allocation/mft</span>$</h1>
-<section>
-  <div class="ma_links">
-    <a href="first-fit">cd first_fit/</a>
-    <a href="worst-fit">cd worst_fit/</a>
-    <a href="best-fit">cd best_fit/</a>
+  <div class="mft-heading">
+    <h1 class="page-heading">
+      <span class="user">os_simulator@cs252</span>:<span class="filename"
+        >~/memory-allocation/mft</span
+      >$
+    </h1>
+    <div class="algo-select">
+      <p class="page-heading">cd</p>
+      <div class="dropdown">
+        <button
+          class="dropdown-toggle mft-toggle page-heading"
+          type="button"
+          id="dropdownMenuButton1"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          select_algorithm
+        </button>
+        <ul
+          class="dropdown-menu mft-menu"
+          aria-labelledby="dropdownMenuButton1"
+        >
+          <li><a class="dropdown-item" href="first-fit">first_fit/</a></li>
+          <li><a class="dropdown-item" href="worst-fit">worst_fit/</a></li>
+          <li><a class="dropdown-item" href="best-fit">best_fit/</a></li>
+        </ul>
+      </div>
+    </div>
   </div>
-  </section>
+  {% endblock %}
 </div>
-{% endblock %}
