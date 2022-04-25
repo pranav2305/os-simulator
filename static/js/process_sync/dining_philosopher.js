@@ -7,7 +7,7 @@ $(document).ready(function () {
     $('#next').click(function initiate() {
         const n = Math.floor(Math.random() * 5);
         const change = document.getElementById("num");
-        change.innerHTML = `Philosopher: ${n}`;
+        change.innerHTML = `Philosopher: ${n+1}`;
         if (phils[n] == 0) {
             phils[n] = 1;
             for(let i = 0; i < 5; i++) {
