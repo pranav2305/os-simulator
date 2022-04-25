@@ -180,5 +180,6 @@ $(document).ready(function () {
         flag = 1;
         document.getElementById("writer").style.visibility = 'visible';
         document.getElementById("stop").style.visibility = 'hidden';
+        document.getElementById("textarea").disabled = true;
     });
 });
