@@ -322,6 +322,7 @@ nav {
 /* Bankers */
 
 #banker-table-row,
-#banker-output {
+#banker-output,
+#banker-alloc {
   display: none;
 }

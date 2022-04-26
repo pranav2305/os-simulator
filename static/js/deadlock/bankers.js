@@ -88,6 +88,7 @@ var res,pro;
                     }
 				}
 				$container.innerHTML = form_html;
+				document.getElementById('banker-alloc').style.display = "flex";
             }
             var y;
 			function banker()
