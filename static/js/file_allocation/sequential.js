@@ -103,15 +103,6 @@ $(document).ready(function () {
         file.innerHTML = table_html;
         document.getElementById('fa-output').appendChild(file);
         document.getElementById('fa-output').style.display = "flex";
-        //   document.getElementById("op1").innerHTML = "File    Start    End     Size";
-        //   for (var i = 0; i < count; i++) {
-        //       str += file_names[i] + "________" + starts[i] + "________" + ends[i] + "________" + file_sizes[i] + "<br />";
-        //       ctx.font = "10px Arial";
-        //       ctx.fillStyle = colors[i];
-        //       ctx.fillRect(starts[i] * canv.width / memSize, 0, (ends[i] + 1 - starts[i]) * canv.width / memSize, canv.height);
-        //       ctx.strokeText(file_names[i], starts[i] * canv.width / memSize, canv.height * 3 / 4);
-        //   }
-        //   document.getElementById("op").innerHTML = str;
     }
 
     function color() {

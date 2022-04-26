@@ -8,22 +8,19 @@ var res,pro;
                 	alert("Invalid Inputs");
 				var
 					$container = document.getElementById('FormFields'),
-					$item, $field, $i;
+					$i;
 				$container.innerHTML = '';
+				var form_html = '';
 				for ($i = 0; $i < $amount; $i++) {
-					$item = document.createElement('div');
-					$item.style.margin = '10px';
-				
-                    $field = document.createElement('label');
-                    $field.innerHTML = 'Resource '+$i;
-					$item.appendChild($field);
-					$field = document.createElement('input');
-					$field.name = 'Design[' + $i + ']';
-					$field.type = 'text';
-                    $field.setAttribute("class","form-control");
-					$item.appendChild($field);
-					$container.appendChild($item);
+					form_html +=
+					`
+					<div class="input-div">
+						<label>Resource ${$i}: </label>
+						<input type="text" name="Design[${$i}]">
+					</div>
+					`
 				}
+				$container.innerHTML = form_html;
             }
             function BuildFormFields2($amount) //For Allocation
 			{
@@ -33,30 +30,29 @@ var res,pro;
                 console.log(res);
 				var
 					$container = document.getElementById('FormFields1'),
-					$item, $field, $i;
+					$i;
 				$container.innerHTML = '';
-                $item = document.createElement('h4');
-                $item.innerHTML = 'Need';
-                $container.appendChild($item);
+				var form_html =
+				`
+				<h2 style="text-align:center;margin-top:1rem;margin-bottom:1rem;">Need</h2>
+				`
 				for ($i = 0; $i < $amount; $i++) {
-                    $item = document.createElement('h5');
-                    $item.innerHTML = 'Process ' + $i;
-                    $container.appendChild($item);
+					form_html +=
+					`
+					<h3>Process ${$i} </h3>
+					`
                     for($j = 0; $j < res; $j++)
                     {
-                        $item = document.createElement('div');
-                        $item.style.margin = '10px';
-                        $field = document.createElement('label');
-                        $field.innerHTML = 'Resource ' + $j + ':';
-					    $item.appendChild($field);
-                        $field = document.createElement('input');
-                        $field.name = 'Design[' + $i + ']';
-                        $field.type = 'text';
-                        $field.setAttribute("class","form-control");
-                        $item.appendChild($field);
-                        $container.appendChild($item);
+						form_html +=
+						`
+						<div class="input-div" style="margin-left:0.5rem;">
+							<label>Resource ${$i}: </label>
+							<input type="text" name="Design[${$i}]">
+						</div>
+						`
                     }
 				}
+				$container.innerHTML = form_html;
                 BuildFormFields3($amount);
             }
 			function BuildFormFields3($amount) //For Allocation
@@ -66,30 +62,32 @@ var res,pro;
                 console.log(res);
 				var
 					$container = document.getElementById('FormFields2'),
-					$item, $field, $i;
+					$i;
 				$container.innerHTML = '';
-                $item = document.createElement('h4');
-                $item.innerHTML = 'Allocated';
-                $container.appendChild($item);
+                var form_html =
+				`
+				<h2 style="text-align:center;margin-bottom:1rem;">Allocated</h2>
+				`
 				for ($i = 0; $i < $amount; $i++) {
-                    $item = document.createElement('h5');
-                    $item.innerHTML = 'Process ' + $i;
-                    $container.appendChild($item);
+                    form_html +=
+					`
+					<h3>Process ${$i} </h3>
+					`
                     for($j = 0; $j < res; $j++)
                     {
-                        $item = document.createElement('div');
-                        $item.style.margin = '10px';
-                        $field = document.createElement('label');
-                        $field.innerHTML = 'Resource ' + $j + ':';
-                        $item.appendChild($field);
-                        $field = document.createElement('input');
-                        $field.name = 'Design[' + $i + ']';
-                        $field.type = 'text';
-                        $field.setAttribute("class","form-control");
-                        $item.appendChild($field);
-                        $container.appendChild($item);
+						for($j = 0; $j < res; $j++)
+						{
+							form_html +=
+							`
+							<div class="input-div" style="margin-left:0.5rem;">
+								<label>Resource ${$i}: </label>
+								<input type="text" name="Design[${$i}]">
+							</div>
+							`
+						}
                     }
 				}
+				$container.innerHTML = form_html;
             }
             var y;
 			function banker()
@@ -150,6 +148,7 @@ var res,pro;
 						var row = tab_need.insertRow(0);
 						var cell = row.insertCell(0);
 						cell.innerHTML = "<b>Need</b>";
+						cell.colSpan=3;
                         var pro_head = tab_need.insertRow(1);
                         var cell = pro_head.insertCell(0);
                         cell.innerHTML = "<b>Process</b>";
@@ -175,6 +174,7 @@ var res,pro;
 						var row = tab_alloc.insertRow(0);
 						var cell = row.insertCell(0);
 						cell.innerHTML = "<b>Allocation</b>";
+						cell.colSpan=3;
                         var alloc_head = tab_alloc.insertRow(1);
                         var cell = alloc_head.insertCell(0);
                         cell.innerHTML = "<b>Process</b>";
@@ -291,4 +291,6 @@ var res,pro;
 									break;
 								}
 						}
+						document.getElementById('banker-table-row').style.display = "flex";
+						document.getElementById('banker-output').style.display = "flex";
 			}

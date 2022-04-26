@@ -12,12 +12,20 @@ body {
   background-color: var(--background);
 }
 
-p, h1, h2, h3, h4, h5, h6, a, label, td, th{
+p, h1, h2, h3, h4, h5, h6, a, label, td, th, ul{
   color: var(--text);
 }
 
 td, th {
   text-align: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
 }
 
 .page-heading {
@@ -309,4 +317,11 @@ nav {
 
 .fa-table {
   width:100%;
+}
+
+/* Bankers */
+
+#banker-table-row,
+#banker-output {
+  display: none;
 }
