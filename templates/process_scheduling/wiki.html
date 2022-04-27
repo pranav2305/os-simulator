@@ -1,99 +1,113 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    Process Scheduling - Wiki
+Process Scheduling - Wiki
 {% endblock %}
 
 {% block body %}
-    <div class="main-container">
-        <div class="card-container">
-            <h1 class="page-heading" style="margin-bottom: 1.5rem;">Process Scheduling</h1>
-            <div class="text">
-                <p>CPU Scheduling is the process of determining which process will be running on the CPU while another process is on hold. The main task of CPU scheduling is 
-                    to make sure that whenever the CPU remains idle, the OS selects at least one of 
-                    the processes available in the ready queue for execution. The selection process 
-                    will be carried out by the CPU scheduler. It selects one of the processes in 
-                    memory that are ready for execution.</p>
-                
-                    <h3>Types of CPU Scheduling</h3>
-                    <p>
-                    <strong>Preemptive Scheduling: </strong> 
-                In Preemptive Scheduling, the tasks are mostly assigned with their priorities. 
-                Sometimes it is important to run a task with a higher priority before another 
-                lower priority task, even if the lower priority task is still running. The lower 
-                priority task holds for some time and resumes when the higher priority task 
-                finishes its execution.</p>
-                <p>
-                    <strong>Non-preemptive Scheduling: </strong>
-                    In this type of scheduling method, the CPU has been allocated to a specific 
-                    process. The process that keeps the CPU busy will release the CPU either by 
-                    switching context or terminating.</p> 
-                <p> 
-                    <h3>Times related to the Process scheduling</h3>
-                    <ol>
-                <li> <strong>Arrival Time:</strong>  
-                The time at which the process enters into the ready queue is called the arrival time.</li>
-                <li><strong>Burst Time:</strong> 
-                The total amount of time required by the CPU to execute the whole process is called 
-                the Burst Time. </li>
-                <li><strong>Completion Time:</strong> 
-                The Time at which the process enters into the completion state or the time at which 
-                the process completes its execution, is called completion time.</li>
-                <li><strong>Turnaround time:</strong> 
-                    The total amount of time spent by the process from its arrival to its completion, is 
+<div class="main-container">
+    <div class="card-container">
+        <h1 class="page-heading" style="margin-bottom: 1.5rem;">Process Scheduling</h1>
+        <div class="text">
+            <p>CPU Scheduling is the process of determining which process will be running on the CPU while another
+                process is on hold. The main task of CPU scheduling is
+                to make sure that whenever the CPU remains idle, the OS selects at least one of
+                the processes available in the ready queue for execution. The selection process
+                will be carried out by the CPU scheduler. It selects one of the processes in
+                memory that are ready for execution.</p>
+
+            <h3>Types of CPU Scheduling</h3>
+            <p>
+                <strong>Preemptive Scheduling: </strong>
+                Preemptive scheduling is used when a process switches from running state to ready state or from the
+                waiting state to ready state. The resources (mainly CPU cycles) are allocated to the process for a
+                limited amount of time and then taken away, and the process is again placed back in the ready queue if
+                that process still has CPU burst time remaining. That process stays in the ready queue till it gets its
+                next chance to execute.
+            </p>
+            <p>
+                <strong>Non-preemptive Scheduling: </strong>
+                Non-preemptive Scheduling is used when a process terminates, or a process switches from running to the
+                waiting state. In this scheduling, once the resources (CPU cycles) are allocated to a process, the
+                process holds the CPU till it gets terminated or reaches a waiting state. In the case of non-preemptive
+                scheduling does not interrupt a process running CPU in the middle of the execution. Instead, it waits
+                till the process completes its CPU burst time, and then it can allocate the CPU to another process.
+            </p>
+            <p>
+            <h3>Times related to the Process scheduling</h3>
+            <ol>
+                <li> <strong>Arrival Time:</strong>
+                    The time at which the process enters into the ready queue is called the arrival time.</li>
+                <li><strong>Burst Time:</strong>
+                    The total amount of time required by the CPU to execute the whole process is called
+                    the Burst Time. </li>
+                <li><strong>Completion Time:</strong>
+                    The Time at which the process enters into the completion state or the time at which
+                    the process completes its execution, is called completion time.</li>
+                <li><strong>Turnaround time:</strong>
+                    The total amount of time spent by the process from its arrival to its completion, is
                     called Turnaround time.<strong>TAT=CT-AT</strong> </li>
-                <li><strong>Waiting Time:</strong> 
-                    The Total amount of time for which the process waits for the CPU to be assigned is 
+                <li><strong>Waiting Time:</strong>
+                    The Total amount of time for which the process waits for the CPU to be assigned is
                     called waiting time. WT=TAT-BT.</li>
-                <li><strong>Response Time:</strong> 
-                    The difference between the arrival time and the time at which the process first gets the 
+                <li><strong>Response Time:</strong>
+                    The difference between the arrival time and the time at which the process first gets the
                     CPU is called Response Time.</li>
-                    </ol>
-                </p>
-                <p><br>
-                    The goal of CPU scheduling is to <br>Maximize:
-                    <li>CPU utilization: CPU utilization is the main task in which the operating system needs to make sure that CPU remains as busy as possible. It can range from 0 to 100 percent. However, for the RTOS, it can be range from 40 percent for low-level and 90 percent for the high-level system.</li>
-                    <li>Throughput: The number of processes that finish their execution per unit time is known Throughput. So, when the CPU is busy executing the process, at that time, work is being done, and the work completed per unit time is called throughput.</li>
-                    <br>
-                    Minimize: Waiting time, response time and turnaround time. 
-                </p>
-                <p> 
-                    <h3>CPU scheduling Algorithms</h3>
-                    <ol>
-                <li> <strong>First Come First Serve:</strong>  
-                    First Come First Serve(FCFS) is the easiest and most simple 
+            </ol>
+            </p>
+            <p><br>
+                The goal of CPU scheduling is to <br>Maximize:
+                <li>CPU utilization: CPU utilization is the main task in which the operating system needs to make sure
+                    that CPU remains as busy as possible. It can range from 0 to 100 percent. However, for the RTOS, it
+                    can be range from 40 percent for low-level and 90 percent for the high-level system.</li>
+                <li>Throughput: The number of processes that finish their execution per unit time is known Throughput.
+                    So, when the CPU is busy executing the process, at that time, work is being done, and the work
+                    completed per unit time is called throughput.</li>
+                <br>
+                Minimize: Waiting time, response time and turnaround time.
+            </p>
+            <p>
+            <h3>CPU scheduling Algorithms</h3>
+            <ol>
+                <li> <strong>First Come First Serve:</strong>
+                    First Come First Serve(FCFS) is the easiest and most simple
                     CPU scheduling algorithm. In this type of algorithm, the process which requests for
-                    the CPU first gets allocated to the CPU first. This scheduling method can be managed 
+                    the CPU first gets allocated to the CPU first. This scheduling method can be managed
                     with a FIFO queue.
-                    As the process enters the ready queue, its PCB (Process Control Block) is linked 
-                    with the tail of the queue. So, when CPU becomes free, it should be assigned to 
+                    As the process enters the ready queue, its PCB (Process Control Block) is linked
+                    with the tail of the queue. So, when CPU becomes free, it should be assigned to
                     the process at the beginning of the queue.</li>
-                <li><strong>Shortest Job First:</strong> 
-                    SJF is a scheduling algorithm in which the process with the shortest execution time 
-                    should be selected for execution next. This scheduling method can be preemptive or non-preemptive. 
+                <li><strong>Shortest Job First:</strong>
+                    SJF is a scheduling algorithm in which the process with the shortest execution time
+                    should be selected for execution next. This scheduling method can be preemptive or non-preemptive.
                     It significantly reduces the average waiting time for other processes awaiting execution. </li>
-                <li><strong>Round-Robin Scheduling:</strong> 
-                    Round robin is one of the oldest, simplest scheduling algorithm. 
-                    The name of this algorithm comes from the round-robin principle, where each person gets an equal share of 
-                    something in turn. In this algorithm, each process is run for a certain time quanta, which may or may not vary for different processes.
-                    It is mostly used for scheduling algorithms in multitasking. 
+                <li><strong>Round-Robin Scheduling:</strong>
+                    Round robin is one of the oldest, simplest scheduling algorithm.
+                    The name of this algorithm comes from the round-robin principle, where each person gets an equal
+                    share of
+                    something in turn. In this algorithm, each process is run for a certain time quanta, which may or
+                    may not vary for different processes.
+                    It is mostly used for scheduling algorithms in multitasking.
                     This algorithm method helps for starvation free execution of processes.</li>
-                <li><strong>Shortest Remaining Time:</strong> 
-                    This is the preemptive version of SJF scheduling. In this method, the CPU will be allocated to the task, 
-                    which is closest to its completion. This method prevents a newer ready process from holding the completion of an older process.</li>
-                <li><strong>Priority Based Scheduling:</strong> 
-                    Priority scheduling is a method of scheduling processes based on priority. 
+                <li><strong>Shortest Remaining Time:</strong>
+                    This is the preemptive version of SJF scheduling. In this method, the CPU will be allocated to the
+                    task,
+                    which is closest to its completion. This method prevents a newer ready process from holding the
+                    completion of an older process.</li>
+                <li><strong>Priority Based Scheduling:</strong>
+                    Priority scheduling is a method of scheduling processes based on priority.
                     In this method, the scheduler selects the tasks to work as per the priority.
-                    Priority scheduling also helps OS to involve priority assignments. 
-                    The processes with higher priority should be carried out first, whereas jobs with equal priorities 
-                    are carried out on a round-robin or FCFS basis. Priority can be decided based on memory requirements, 
+                    Priority scheduling also helps OS to involve priority assignments.
+                    The processes with higher priority should be carried out first, whereas jobs with equal priorities
+                    are carried out on a round-robin or FCFS basis. Priority can be decided based on memory
+                    requirements,
                     time requirements, etc.</li>
-                <li><strong>Longest job first:</strong> 
-                    This algorithm is similar to SJF, but the process with the longest execution time 
+                <li><strong>Longest job first:</strong>
+                    This algorithm is similar to SJF, but the process with the longest execution time
                     is selected for execution next.</li>
-                    </ol>
-                </p>
+            </ol>
+            </p>
         </div>
     </div>
-    </div>
+</div>
 {% endblock %}
