@@ -15,8 +15,8 @@ var cpu_efficiency;
 var average_wt;
 var average_tat;
 $(document).ready(function () {
-    $('#tq').style.display = 'inline-block';
-    $('#tq-label').style.display = 'inline-block';
+    document.getElementById('tq').style.display = 'inline-block';
+    document.getElementById('tq-label').style.display = 'inline-block'
   
     $('#start').click(function () {
         tq = parseInt(document.getElementById("tq").value);
@@ -180,10 +180,10 @@ $(document).ready(function () {
             drawTable(i + 1);
         }
         else {
-            $("#average").append("<b>The average waiting time of the given processes is " + average_wt + "</b><br>");
-            $("#average").append("<b>The average turn around time of the given processes is " + average_tat + "</b><br>");
-            $("#average").append("<b>The throughput of the given processes is " + throughput + "</b><br>");
-            $("#average").append("<b>The CPU efficiency is " + cpu_efficiency + "%</b><br>");
+            $("#average").append("<b>Average waiting time:  " + average_wt + "</b><br>");
+            $("#average").append("<b>Average turn around time: " + average_tat + "</b><br>");
+            $("#average").append("<b>Throughput: " + throughput + "</b><br>");
+            $("#average").append("<b>CPU efficiency: " + cpu_efficiency + "%</b><br>");
         }
     }
 
