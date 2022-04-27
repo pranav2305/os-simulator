@@ -10,6 +10,7 @@
 
 body {
   background-color: var(--background);
+  color: var(--text);
 }
 
 p, h1, h2, h3, h4, h5, h6, a, label, td, th, ul, ol, li{
@@ -92,9 +93,6 @@ form {
   width: 80%;
   margin-bottom: 1rem;
   row-gap: 0.5rem;
-}
-.text-div {
-  color: var(--text);
 }
 .button-div {
   display: flex;
