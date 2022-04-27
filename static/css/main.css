@@ -3,8 +3,8 @@
 :root {
   --background: rgb(11, 12, 16);
   --text: rgb(196, 198, 199);
-  --light-blue: rgb(102, 252, 241);
-  --darker-blue: rgb(69, 162, 158);
+  --light-blue: #6f9cc8;
+  --darker-blue: #6f9cc8;
   --darkest-blue: rgb(31, 40, 51);
 }
 
