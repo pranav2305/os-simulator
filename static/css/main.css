@@ -93,7 +93,9 @@ form {
   margin-bottom: 1rem;
   row-gap: 0.5rem;
 }
-
+.text-div {
+  color: var(--text);
+}
 .button-div {
   display: flex;
   flex-direction: row;
