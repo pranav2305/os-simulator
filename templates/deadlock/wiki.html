@@ -6,6 +6,87 @@
 
 {% block body %}
     <div class="main-container">
-        <h1 class="page-heading"><span class="user">os_simulator@cs252</span>:<span class="filename">~/deadlock/wiki</span>$</h1>
+        <div class="card-container">
+            <h1 class="page-heading" style="margin-bottom:1.5rem;">Deadlock and Banker's algorithm</h1>
+            
+            <div class="text">
+                <h2>Deadlock</h2>
+                <p>Deadlock is a situation where a set of processes are blocked because each process is holding a resource 
+                    and waiting for another resource acquired by some other process. 
+                    Consider an example when two trains are coming toward each other on the same track 
+                    and there is only one track, none of the trains can move once they are in front of each other. 
+                    A similar situation occurs in operating systems when there are two or more processes that hold some 
+                    resources and wait for resources held by other(s). For example, in the below diagram, Process 1 is holding
+                     Resource 1 and waiting for resource 2 which is acquired by process 2, and process 2 is waiting for resource 1. </p>
+                     <img src = "/static/pic/deadlock/p1.png">
+                <p>
+                    <strong>Methods for handling deadlock</strong>
+                    <ol>
+                        <li>Deadlock prevention or avoidance: The idea is to not let the system into a deadlock state. 
+                            One can zoom into each category individually, Prevention is done by negating one of above mentioned necessary conditions for deadlock. 
+                            Avoidance is kind of futuristic in nature. By using strategy of “Avoidance”, we have to make an assumption. We need to ensure that all information about resources which process will need are known to us prior to execution of the process. 
+                            We use Banker’s algorithm in order to avoid deadlock.</li>
+                        <li>Deadlock detection and recovery: Let deadlock occur, then do preemption to handle it once occurred.</li>
+                        <li>Ignore the problem altogether: If deadlock is very rare, then let it happen and reboot the system. This is the approach that both Windows and UNIX take.</li>
+                    </ol>  
+                </p>
+                <h2>Banker’s Algorithm</h2>
+                <p>
+                    Bankers’s Algorithm(by Dijkstra) is resource allocation and deadlock avoidance algorithm which test 
+                    all the request made by processes for resources, it checks for the safe state, 
+                    if after granting request system remains in the safe state it allows the request and if 
+                    there is no safe state it doesn’t allow the request made by the process. <br><br>
+
+                    Inputs to Banker’s Algorithm:<br>    
+                    Max need of resources by each process. <br>
+                    Currently, allocated resources to each process. <br>
+                    Max free available resources in the system. <br><br>
+
+                    The request will only be granted under the below condition: <br>
+                    If the request made by the process is less than or equal to maximum need of that process. 
+                    If the request made by the process is less than or equal to the freely available resource(s) in the system.<br><br>
+                </p>
+                <p>    
+                    Example: 
+                    <br><br>
+                    Total resources in system:<br>
+                    A B C D<br>
+                    6 5 7 6
+                    
+                    <br><br>
+                    Available system resources are:<br>
+                    A B C D<br>
+                    3 1 1 2
+                    
+                    <br><br>
+                    Processes (currently allocated resources):<br>
+                    Rs  A B C D<br>
+                    P1  1 2 2 1<br>
+                    P2  1 0 3 3<br>
+                    P3  1 2 1 0
+                    
+                    <br><br>
+                    Processes (maximum resources needed):<br>
+                    Rs  A B C D<br>
+                    P1  3 3 2 2<br>
+                    P2  1 2 3 4<br>
+                    P3  1 3 5 0
+                    
+                    <br><br>
+                    Need = maximum resources needed - currently allocated resources.<br>
+                    Processes (need resources):<br>
+                    Rs  A B C D<br>
+                    P1  2 1 0 1<br>
+                    P2  0 2 0 1<br>
+                    P3  0 1 4 0
+                    <br><br>
+                    In this case, the requests are feasible and will be granted.<br>
+                    First, P1 will be granted its request and after execution releases the resources it's holding. 
+                    So Available system resources are now: A=4, B=3, C=3, D=3<br>
+                    Next, P2 will be granted its request. Available system resources are now: A=5, B=3, C=6, D=6<br>
+                    Finally, P3 will be granted its request. Available system resources are now: A=6, B=5, C=7, D=6 i.e. the total resources in the system.<br>
+                </p>
+            </div>
+        </div>
     </div>
 {% endblock %}
