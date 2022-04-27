@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Process Synchronization - Wiki
+{% endblock %}
+
+{% block body %}
+<div class="main-container">
+    <div class="card-container">
+        <h1 class="page-heading" style="margin-bottom: 1.5rem;">Process Synchronization</h1>
+        <div class="text">
+            <p>Process Synchronization means coordinating the execution of processes such that no two processes access
+                the same shared resources and data. It is required in a multi-process system where multiple processes
+                run together, and more than one process tries to gain access to the same shared resource or data at the
+                same time.</p>
+            <h3>Sections of a program in OS</h3>
+            <p>Following are the four essential sections of a program:</p>
+            <ol>
+                <li><strong>Entry Section:</strong> This decides the entry of any process.</li>
+                <li><strong>Critical Section:</strong> This allows a process to enter and modify the shared variable.
+                </li>
+                <li><strong>Exit Section:</strong> This allows the process waiting in the Entry Section, to enter into
+                    the Critical Sections and makes sure that the process is removed through this section once it’s done
+                    executing.</li>
+                <li><strong>Remainder Section:</strong> Parts of the Code, not present in the above three sections are
+                    collectively called Remainder Section.</li>
+            </ol>
+            <h3>Types of process in Operating System</h3>
+            <p>On the basis of synchronization, the following are the two types of processes:</p>
+            <ol>
+                <li><strong>Independent Processes:</strong> The execution of one process doesn’t affect the execution of
+                    another.</li>
+                <li><strong>Cooperative Processes:</strong> Execution of one process affects the execution of the other.
+                    Thus, it is necessary that these processes are synchronized in order to guarantee the order of
+                    execution.</li>
+            </ol>
+            <h3>The Dining Philosopher Problem</h3>
+            <p>The dining philosopher's problem is the classical problem of synchronization which says that Five
+                philosophers are sitting around a circular table and their job is to think and eat alternatively. A bowl
+                of noodles is placed at the center of the table along with five chopsticks for each of the philosophers.
+                To eat a philosopher needs both their right and a left chopstick. A philosopher can only eat if both
+                immediate left and right chopsticks of the philosopher is available. In case if both immediate left and
+                right chopsticks of the philosopher are not available then the philosopher puts down their (either left
+                or right) chopstick and starts thinking again.<br>
+
+                The dining philosopher demonstrates a large class of concurrency control problems hence it's a classic
+                synchronization problem.</p>
+
+            <h3>The Producer Consumer Problem</h3>
+            <p>The Producer-Consumer problem is a classical multi-process synchronization problem, that is we are trying
+                to achieve synchronization between more than one process.<br>
+
+                There is one Producer in the producer-consumer problem, Producer is producing some items, whereas there
+                is one Consumer that is consuming the items produced by the Producer. The same memory buffer is shared
+                by both producers and consumers which is of fixed-size.<br>
+
+                The task of the Producer is to produce the item, put it into the memory buffer, and again start
+                producing items. Whereas the task of the Consumer is to consume the item from the memory buffer.</p>
+
+            <h3>The Reader Writer Problem</h3>
+            <p>The readers-writers problem is a classical problem of process synchronization, it relates to a data set
+                such as a file that is shared between more than one process at a time. Among these various processes,
+                some are Readers - which can only read the data set; they do not perform any updates, some are Writers -
+                can both read and write in the data sets.<br>
+
+                The readers-writers problem is used for managing synchronization among various reader and writer process
+                so that there are no problems with the data sets, i.e. no inconsistency is generated.<br>
+
+                Let's understand with an example - If two or more than two readers want to access the file at the same
+                point in time there will be no problem. However, in other situations like when two writers or one reader
+                and one writer wants to access the file at the same point of time, there may occur some problems, hence
+                the task is to design the code in such a manner that if one reader is reading then no writer is allowed
+                to update at the same point of time, similarly, if one writer is writing no reader is allowed to read
+                the file at that point of time and if one writer is updating a file other writers should not be allowed
+                to update the file at the same point of time. However, multiple readers can access the object at the
+                same time.</p>
+
+            <h3>The Sleeping Barber Problem</h3>
+            <p>The analogy is based upon a hypothetical barber shop with one barber. There is a barber shop which has
+                one barber, one barber chair, and n chairs for waiting for customers if there are any to sit on the
+                chair.</p>
+            <ul>
+                <li>If there is no customer, then the barber sleeps in his own chair.</li>
+                <li>When a customer arrives, he has to wake up the barber.</li>
+                <li>If there are many customers and the barber is cutting a customer’s hair, then the remaining
+                    customers either wait if there are empty chairs in the waiting room or they leave if no chairs are
+                    empty.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}

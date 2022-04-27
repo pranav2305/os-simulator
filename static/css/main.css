@@ -326,3 +326,23 @@ nav {
 #banker-alloc {
   display: none;
 }
+
+.text img {
+  display: block;
+  margin: auto;
+}
+
+.st-name {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.st-roll {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.st-conri {
+  font-size: 1.5rem;
+  font-weight: 600;
+}

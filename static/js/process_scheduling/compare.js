@@ -92,12 +92,12 @@ $(document).ready(function () {
         var myChart = new Chart(document.getElementById("bar-chart"), {
             type: 'bar',
             data: {
-                labels: ["FCFS", "SJF", "SRTF", "Priority Preemptive", "Priority Nonpreemptive", "Longest Job First", "Largest Remaining Time First"],
+                labels: ["FCFS", "SJF", "SRTF", "Priority", "Round Robin", "LJF"],
                 datasets: [
                     {
                         label: "Average Waiting Time",
                         backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850", "#ff6666", "#ffc34d"],
-                        data: [average_wt_fcfs, average_wt_sjf, average_wt_srtf, average_wt_priority, average_wt_prnonpre, average_wt_ljf, average_wt_lrtf]
+                        data: [average_wt_fcfs, average_wt_sjf, average_wt_srtf, average_wt_priority, average_wt_prnonpre, average_wt_ljf]
                     }
                 ],
             },
