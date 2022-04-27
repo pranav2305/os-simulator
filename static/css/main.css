@@ -8,6 +8,41 @@
   --darkest-blue: rgb(31, 40, 51);
 }
 
+/* Global */
+html{
+  min-height: 100%;
+}
+.home-body{
+  height: calc(100vh - 8em);
+  padding: 1rem;
+  color: var(--text);
+}
+.line-1{
+    position: relative;
+    top: 50%;  
+    margin: 0 auto;
+    border-right: 2px solid var(--text);
+    font-size: min(10vw, 8rem);
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    transform: translateY(-50%);    
+}
+
+/* Animation */
+.anim-typewriter{
+  animation: typewriter 4s steps(44) 1s 1 normal both,
+             blinkTextCursor 500ms steps(44) infinite normal;
+}
+@keyframes typewriter{
+  from{width: 0;}
+  to{width: 8.5em;}
+}
+@keyframes blinkTextCursor{
+  from{border-right-color: var(--text);}
+  to{border-right-color: transparent;}
+}
+
 body {
   background-color: var(--background);
   color: var(--text);
