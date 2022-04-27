@@ -29,6 +29,14 @@ html{
     transform: translateY(-50%);    
 }
 
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(196, 198, 199)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+.navbar-toggler {
+  border-color: var(--text);
+}
+
 /* Animation */
 .anim-typewriter{
   animation: typewriter 4s steps(44) 1s 1 normal both,
@@ -82,20 +90,6 @@ form {
 
 .row {
   width: 100%;
-}
-
-.neons {
-   margin-top: 10rem;
-   text-align: center;
-}
-
-.neons h1 {
-  font-size: 9rem;
-  text-align: center;
-   font-weight: bold;
-  -webkit-animation: glow 1s ease-in-out infinite alternate;
-  -moz-animation: glow 1s ease-in-out infinite alternate;
-  animation: glow 1s ease-in-out infinite alternate;
 }
 
 .main-container {
@@ -219,10 +213,6 @@ nav {
 
 .nav-link:focus {
   color: var(--darker-blue);
-}
-
-.custom-toggler.navbar-toggler {
-  border-color: var(--light-blue);
 }
 
 .dropdown-menu {
