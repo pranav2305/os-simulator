@@ -28,13 +28,6 @@ form {
   width: 100%;
 }
 
-li {
-  color: var(--text);
-}
-ol {
-  color: var(--text);
-}
-
 .page-heading {
   font-size: 2rem;
 }
