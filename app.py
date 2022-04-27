@@ -16,8 +16,11 @@ def team():
 # @app.route('/sys-calls')
 # def sys_calls():
 #   return render_template('sys_call/sys_call.html')
-    
 
+@app.route('/deadlock/', methods=['GET'])
+def d_wiki():
+    return render_template('deadlock/wiki.html')
+    
 @app.route('/deadlock/bankers/', methods=['GET'])
 def d_bankers():
     return render_template('deadlock/bankers.html', algo='bankers')
