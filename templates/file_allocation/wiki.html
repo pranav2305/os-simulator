@@ -7,65 +7,65 @@
 {% block body %}
     <div class="main-container">
         <div class="card-container">
-            <h1 class="page-heading">File Allocation</h1>
+            <h1 class="page-heading" style="margin-bottom:1.5rem;">File Allocation</h1>
+            <div class="text">
+                <h2>Multiprogramming with fixed tasks (MFT)
+                </h2>
+                <p>Many files are stored on the same drive; the difficulty is determining how to arrange these files
+                    so that disc space is properly utilized and files can be retrieved fast. The File Allocation Methods
+                    allow the operating system to store and access files in memory more effectively.</p>
+                <p>
+                    Problems that file allocation aims to solve- 
+                    <li><strong>Fragmentation:</strong> Fragmentation is an unwelcome problem in the operating system in which processes are loaded
+                        and unloaded from memory, fragmenting available memory space.</li>
+                    <li><strong>Slower Memory Access:</strong> Memory access may be slowed if the allocation procedures for memory blocks are not optimal.
+                        Today, we store a large quantity of data in our memory, and the approach used to find and
+                        retrieve it improves the operating system's response time.</li>
+                </p>
+                <p>The allocation methods define how the files are stored in the disk blocks. There are three main
+                    disk space or file allocation methods :- Contiguous Allocation, inked Allocation and Indexed Allocation</p>
+                <p><strong>Contiguous Allocation</strong><br>
+                    Each file in this approach takes up a contiguous set of blocks on the disc. If a file requires n
+                    blocks and is given the starting point of block b, the blocks assigned to the file will be: b, b+1,
+                    b+2,......b+n-1. This means that we can determine the blocks filled by the file based on the
+                    starting block address and the file's length (in terms of blocks required).<br>
+                    A file with contiguous allocation has a directory entry that contains the address of the starting
+                    block and the length of the allocated portion.<br>
+                    The file 'mail' in the following diagram begins at block 19 and has a length of 6 blocks. As a
+                    result, it takes up 19, 20, 21, 22, 23, 24 blocks.<br><br>
+                    Advantages: Both the Sequential and Direct Accesses are supported by this. 
+                    For direct access, the address of the kth block of the file which starts at block b can easily be obtained as (b+k).
+                    This is extremely fast since the number of seeks are minimal because of contiguous allocation of file blocks.<br>
+                    Disadvantages: This method suffers from both internal and external fragmentation. This makes it inefficient in terms of memory utilization.
+                    Increasing file size is difficult because it depends on the availability of contiguous memory at a particular instance.
+                </p>
+                <img src = "/static/pic/file_allocation/p1.png">
+                <p><strong>Linked Allocation</strong><br>
+                    Each file in this approach is a linked list of disc blocks that do not have to be contiguous. The
+                    disc blocks can be strewn about the disc in any direction.
+                    A pointer to the beginning and end of the file block is included in the directory entry. The file's
+                    next block is indicated via a pointer in each block.<br>
+                    The 'jeep' file in the accompanying picture shows how the blocks are spread at random. The
+                    final block (25) has a value of -1, indicating that it is a null pointer that does not point to another
+                    block.<br><br>
+                    Advantages: This is very flexible in terms of file size. File size can be increased easily since the system does not have to look for a contiguous chunk of memory. 
+                    This method does not suffer from external fragmentation. This makes it relatively better in terms of memory utilization.<br>
+                    Disadvantages: Because the file blocks are distributed randomly on the disk, a large number of seeks are needed to access every block individually. This makes linked allocation slower.
+                     It does not support random or direct access. We can not directly access the blocks of a file. A block k of a file can be accessed by traversing k blocks sequentially (sequential access ) from the starting block of the file via block pointers.
+                      Pointers required in the linked allocation incur some extra overhead.
+                </p>
+                <img src = "/static/pic/file_allocation/p2.png">
+                <p><strong>Indexed Allocation</strong><br>
+                    In this scheme, a unique block called the Index block consists of the pointers to all of the blocks
+                    occupied by a file. Each file has its own index block. The ith enter within the index
+                    block consists of the disk address of the ith file block. The directory entry contains the address of the index block.<br><br>
+                    Advantages: This supports direct access to the blocks occupied by the file and therefore provides fast access to the file blocks.
+                     It overcomes the problem of external fragmentation.<br>
+                    Disadvantages: The pointer overhead for indexed allocation is greater than linked allocation.
+                     For very small files, say files that expand only 2-3 blocks, the indexed allocation would keep one entire block (index block) for the pointers which is inefficient in terms of memory utilization. However, in linked allocation we lose the space of only 1 pointer per block.
+                </p>
+                <img src = "/static/pic/file_allocation/p3.png">
+            </div>
         </div>
-    </div>
-    <div class="text">
-        <h2>Multiprogramming with fixed tasks (MFT)
-        </h2>
-        <p>Many files are stored on the same drive; the difficulty is determining how to arrange these files
-            so that disc space is properly utilized and files can be retrieved fast. The File Allocation Methods
-            allow the operating system to store and access files in memory more effectively.</p>
-        <p>
-            Problems that file allocation aims to solve- 
-            <li><strong>Fragmentation:</strong> Fragmentation is an unwelcome problem in the operating system in which processes are loaded
-                and unloaded from memory, fragmenting available memory space.</li>
-            <li><strong>Slower Memory Access:</strong> Memory access may be slowed if the allocation procedures for memory blocks are not optimal.
-                Today, we store a large quantity of data in our memory, and the approach used to find and
-                retrieve it improves the operating system's response time.</li>
-        </p>
-        <p>The allocation methods define how the files are stored in the disk blocks. There are three main
-            disk space or file allocation methods :- Contiguous Allocation, inked Allocation and Indexed Allocation</p>
-        <p><strong>Contiguous Allocation</strong><br>
-            Each file in this approach takes up a contiguous set of blocks on the disc. If a file requires n
-            blocks and is given the starting point of block b, the blocks assigned to the file will be: b, b+1,
-            b+2,......b+n-1. This means that we can determine the blocks filled by the file based on the
-            starting block address and the file's length (in terms of blocks required).<br>
-            A file with contiguous allocation has a directory entry that contains the address of the starting
-            block and the length of the allocated portion.<br>
-            The file 'mail' in the following diagram begins at block 19 and has a length of 6 blocks. As a
-            result, it takes up 19, 20, 21, 22, 23, 24 blocks.<br><br>
-            Advantages: Both the Sequential and Direct Accesses are supported by this. 
-            For direct access, the address of the kth block of the file which starts at block b can easily be obtained as (b+k).
-            This is extremely fast since the number of seeks are minimal because of contiguous allocation of file blocks.<br>
-            Disadvantages: This method suffers from both internal and external fragmentation. This makes it inefficient in terms of memory utilization.
-            Increasing file size is difficult because it depends on the availability of contiguous memory at a particular instance.
-        </p>
-        <img src = "/static/pic/file_allocation/p1.png">
-        <p><strong>Linked Allocation</strong><br>
-            Each file in this approach is a linked list of disc blocks that do not have to be contiguous. The
-            disc blocks can be strewn about the disc in any direction.
-            A pointer to the beginning and end of the file block is included in the directory entry. The file's
-            next block is indicated via a pointer in each block.<br>
-            The 'jeep' file in the accompanying picture shows how the blocks are spread at random. The
-            final block (25) has a value of -1, indicating that it is a null pointer that does not point to another
-            block.<br><br>
-            Advantages: This is very flexible in terms of file size. File size can be increased easily since the system does not have to look for a contiguous chunk of memory. 
-            This method does not suffer from external fragmentation. This makes it relatively better in terms of memory utilization.<br>
-            Disadvantages: Because the file blocks are distributed randomly on the disk, a large number of seeks are needed to access every block individually. This makes linked allocation slower.
-             It does not support random or direct access. We can not directly access the blocks of a file. A block k of a file can be accessed by traversing k blocks sequentially (sequential access ) from the starting block of the file via block pointers.
-              Pointers required in the linked allocation incur some extra overhead.
-        </p>
-        <img src = "/static/pic/file_allocation/p2.png">
-        <p><strong>Indexed Allocation</strong><br>
-            In this scheme, a unique block called the Index block consists of the pointers to all of the blocks
-            occupied by a file. Each file has its own index block. The ith enter within the index
-            block consists of the disk address of the ith file block. The directory entry contains the address of the index block.<br><br>
-            Advantages: This supports direct access to the blocks occupied by the file and therefore provides fast access to the file blocks.
-             It overcomes the problem of external fragmentation.<br>
-            Disadvantages: The pointer overhead for indexed allocation is greater than linked allocation.
-             For very small files, say files that expand only 2-3 blocks, the indexed allocation would keep one entire block (index block) for the pointers which is inefficient in terms of memory utilization. However, in linked allocation we lose the space of only 1 pointer per block.
-        </p>
-        <img src = "/static/pic/file_allocation/p3.png">
     </div>
 {% endblock %}

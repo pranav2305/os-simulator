@@ -7,150 +7,150 @@
 {% block body %}
     <div class="main-container">
         <div class="card-container">
-            <h1 class="page-heading">MFT and MVT</h1>
+            <h1 class="page-heading" style="margin-bottom:1.5rem;">MFT and MVT</h1>
+            <div class="text">
+                <h2>Multiprogramming with fixed tasks (MFT)
+                </h2>
+                <p>This is the oldest and simplest technique used to put more than one process in the 
+                    main memory. In this partitioning, the number of partitions (non-overlapping) in 
+                    RAM is fixed but the size of each partition may or may not be the same. As it is 
+                    a contiguous allocation, hence no spanning is allowed. Here partitions are made 
+                    before execution or during system configure.</p>
+                <img src = "/static/pic/memory_allocation/p1.png">
+                <p> 
+                    As illustrated in above figure, first process is only consuming 1MB out of 4MB in 
+                    the main memory.
+                    Hence, Internal Fragmentation in first block is (4-1) = 3MB.
+                    Sum of Internal Fragmentation in every block = (4-1)+(8-7)+(8-7)+(16-14)= 
+                    3+1+1+2 = 7MB.
+                </p>    
+                <p> 
+                    Suppose process P5 of size 7MB comes. But this process cannot be 
+                    accommodated in spite of available free space because of contiguous allocation 
+                    (as spanning is not allowed). Hence, 7MB becomes part of External 
+                    Fragmentation
+                </p> 
+                <p>
+                    <strong>Advantages of MFT –</strong>
+                    <li>Easy to implement</li>
+                    <li>Little OS overhead</li>
+                    <br>
+                    <strong>Disadvantages of MFT –</strong>
+                    <li>Internal Fragmentation and External Fragmentation</li>
+                    <li>Limitation on Degree of Multiprogramming
+                    </li>
+                </p>
+                <h2>Multiprogramming with variable tasks (MVT)
+                </h2>
+                <p>
+                    It is a part of Contiguous allocation technique. It is used to alleviate the 
+                    problem faced by Fixed Partitioning. In contrast with fixed partitioning, 
+                    partitions are not made before the execution or during system configure.
+                    Various features associated with variable Partitioning- 
+                   <ol>
+                    <li>Initially RAM is empty and partitions are made during the run-time 
+                        according to process’s need instead of partitioning during system 
+                        configure.</li>
+                    <li>The size of partition will be equal to incoming process.</li> 
+                    <li>The partition size varies according to the need of the process so 
+                        that the internal fragmentation can be avoided to ensure efficient 
+                        utilisation of RAM.</li>
+                    <li>Number of partitions in RAM is not fixed and depends on the 
+                        number of incoming process and Main Memory’s size.</li>
+                </ol>
+                </p>
+                <img src = "/static/pic/memory_allocation/p2.png">
+                <p>
+                    <strong>Advantages of MVT –</strong>
+                    <li>No Internal Fragmentation</li>
+                    <li>No restriction on Degree of Multiprogramming</li>
+                    <li>No Limitation on the size of the process</li>
+                    <br>
+                    <strong>Disadvantages of MVT –</strong>
+                    <li>Difficult Implementation</li>
+                    <li>External Fragmentation</li>
+                </p>
+                <h2>Partition Allocation</h2>
+                <p>In Partition Allocation, when there is more than one partition freely 
+                    available to accommodate a process’s request, a partition must be selected. 
+                    To choose a particular partition, a partition allocation method is needed. A 
+                    partition allocation method is considered better if it avoids internal 
+                    fragmentation.<br>
+                    When it is time to load a process into the main memory and if there is more 
+                    than one free block of memory of sufficient size then the OS decides which 
+                    free block to allocate.<br>
+                    There are different Placement Algorithms:<br>
+                    <ol>
+                        <li>First Fit</li>
+                        <li>Best Fit</li>
+                        <li>Worst Fit</li>
+                    </ol>
+                </p>
+                <p>
+                    <strong>First-Fit Memory Allocation:</strong> <br>
+                    This method keeps the free/busy list of jobs organized by memory location, 
+                    low-ordered to high-ordered memory. In this method, first job claims the first 
+                    available memory with space more than or equal to it’s size. The operating 
+                    system doesn’t search for appropriate partition but just allocate the job to the 
+                    nearest memory partition available with sufficient size.
+                </p>
+                <img src = "/static/pic/memory_allocation/p3.png">
+                <p>As illustrated above, the system assigns J1 the nearest partition in the 
+                    memory. As a result, there is no partition with sufficient space is available for 
+                    J3 and it is placed in the waiting list.<br><br>
+                    <strong>Advantages of First-Fit Memory Allocation:</strong> <br>
+                    It is fast in processing. As the processor allocates the nearest available 
+                    memory partition to the job, it is very fast in execution.
+                    <strong>Disdvantages of First-Fit Memory Allocation:</strong> <br>
+                    It wastes a lot of memory. The processor ignores if the size of partition 
+                    allocated to the job is very large as compared to the size of job or not. It just 
+                    allocates the memory. As a result, a lot of memory is wasted and many jobs 
+                    may not get space in the memory, and would have to wait for another job to 
+                    complete.
+                </p>
+                <p>
+                    <strong>Best-Fit Memory Allocation:</strong> <br>
+                    This method keeps the free/busy list in order by size – smallest to largest. In 
+                    this method, the operating system first searches the whole of the memory 
+                    according to the size of the given job and allocates it to the closest-fitting free 
+                    partition in the memory, making it able to use memory efficiently. Here the 
+                    jobs are in the order from smallest job to largest job.
+                </p>
+                <img src = "/static/pic/memory_allocation/p4.png">
+                <p>As illustrated in above figure, the operating system first search throughout 
+                    the memory and allocates the job to the minimum possible memory partition, 
+                    making the memory allocation efficient.<br><br>
+                    <strong>Advantages of Best-Fit Allocation :</strong> <br>
+                    Memory Efficient. The operating system allocates the job minimum possible 
+                    space in the memory, making memory management very efficient. To save 
+                    memory from getting wasted, it is the best method.
+                    <strong>Disdvantages of Best-Fit Memory Allocation:</strong> <br>
+                    It is a Slow Process. Checking the whole memory for each job makes the 
+                working of the operating system very slow. It takes a lot of time to complete 
+                the work.
+                </p>
+                <p>
+                    <strong>Worst-Fit Memory Allocation:</strong> <br>
+                    In this allocation technique, the process traverses the whole memory and 
+                    always search for the largest hole/partition, and then the process is placed in 
+                    that hole/partition. It is a slow process because it has to traverse the entire 
+                    memory to search the largest hole.
+                    Here is an example to understand Worst Fit-Allocation -
+                </p>
+                <img src = "/static/pic/memory_allocation/p5.png">
+                <p>Here Process P1=30K is allocated with the Worst Fit-Allocation technique, so 
+                    it traverses the entire memory and selects memory size 400K which is the 
+                    largest, and hence there is an internal fragmentation of 370K which is very 
+                    large and so many other processes can also utilize this leftover space.<br><br>
+                    <strong>Advantages of Worst-Fit Allocation :</strong> <br>
+                    Since this process chooses the largest hole/partition, therefore there will be 
+                    large internal fragmentation. Now, this internal fragmentation will be quite big 
+                    so that other small processes can also be placed in that leftover partition.
+                    <strong>Disdvantages of Worst-Fit Memory Allocation:</strong> <br>
+                    It is a slow process because it traverses all the partitions in the memory and 
+                    then selects the largest partition among all the partitions, which is a time-consuming process.
+                </p>
+            </div>
         </div>
-    </div>
-    <div class="text">
-        <h2>Multiprogramming with fixed tasks (MFT)
-        </h2>
-        <p>This is the oldest and simplest technique used to put more than one process in the 
-            main memory. In this partitioning, the number of partitions (non-overlapping) in 
-            RAM is fixed but the size of each partition may or may not be the same. As it is 
-            a contiguous allocation, hence no spanning is allowed. Here partitions are made 
-            before execution or during system configure.</p>
-        <img src = "/static/pic/memory_allocation/p1.png">
-        <p> 
-            As illustrated in above figure, first process is only consuming 1MB out of 4MB in 
-            the main memory.
-            Hence, Internal Fragmentation in first block is (4-1) = 3MB.
-            Sum of Internal Fragmentation in every block = (4-1)+(8-7)+(8-7)+(16-14)= 
-            3+1+1+2 = 7MB.
-        </p>    
-        <p> 
-            Suppose process P5 of size 7MB comes. But this process cannot be 
-            accommodated in spite of available free space because of contiguous allocation 
-            (as spanning is not allowed). Hence, 7MB becomes part of External 
-            Fragmentation
-        </p> 
-        <p>
-            <strong>Advantages of MFT –</strong>
-            <li>Easy to implement</li>
-            <li>Little OS overhead</li>
-            <br>
-            <strong>Disadvantages of MFT –</strong>
-            <li>Internal Fragmentation and External Fragmentation</li>
-            <li>Limitation on Degree of Multiprogramming
-            </li>
-        </p>
-        <h2>Multiprogramming with variable tasks (MVT)
-        </h2>
-        <p>
-            It is a part of Contiguous allocation technique. It is used to alleviate the 
-            problem faced by Fixed Partitioning. In contrast with fixed partitioning, 
-            partitions are not made before the execution or during system configure.
-            Various features associated with variable Partitioning- 
-           <ol>
-            <li>Initially RAM is empty and partitions are made during the run-time 
-                according to process’s need instead of partitioning during system 
-                configure.</li>
-            <li>The size of partition will be equal to incoming process.</li> 
-            <li>The partition size varies according to the need of the process so 
-                that the internal fragmentation can be avoided to ensure efficient 
-                utilisation of RAM.</li>
-            <li>Number of partitions in RAM is not fixed and depends on the 
-                number of incoming process and Main Memory’s size.</li>
-        </ol>
-        </p>
-        <img src = "/static/pic/memory_allocation/p2.png">
-        <p>
-            <strong>Advantages of MVT –</strong>
-            <li>No Internal Fragmentation</li>
-            <li>No restriction on Degree of Multiprogramming</li>
-            <li>No Limitation on the size of the process</li>
-            <br>
-            <strong>Disadvantages of MVT –</strong>
-            <li>Difficult Implementation</li>
-            <li>External Fragmentation</li>
-        </p>
-        <h2>Partition Allocation</h2>
-        <p>In Partition Allocation, when there is more than one partition freely 
-            available to accommodate a process’s request, a partition must be selected. 
-            To choose a particular partition, a partition allocation method is needed. A 
-            partition allocation method is considered better if it avoids internal 
-            fragmentation.<br>
-            When it is time to load a process into the main memory and if there is more 
-            than one free block of memory of sufficient size then the OS decides which 
-            free block to allocate.<br>
-            There are different Placement Algorithms:<br>
-            <ol>
-                <li>First Fit</li>
-                <li>Best Fit</li>
-                <li>Worst Fit</li>
-            </ol>
-        </p>
-        <p>
-            <strong>First-Fit Memory Allocation:</strong> <br>
-            This method keeps the free/busy list of jobs organized by memory location, 
-            low-ordered to high-ordered memory. In this method, first job claims the first 
-            available memory with space more than or equal to it’s size. The operating 
-            system doesn’t search for appropriate partition but just allocate the job to the 
-            nearest memory partition available with sufficient size.
-        </p>
-        <img src = "/static/pic/memory_allocation/p3.png">
-        <p>As illustrated above, the system assigns J1 the nearest partition in the 
-            memory. As a result, there is no partition with sufficient space is available for 
-            J3 and it is placed in the waiting list.<br><br>
-            <strong>Advantages of First-Fit Memory Allocation:</strong> <br>
-            It is fast in processing. As the processor allocates the nearest available 
-            memory partition to the job, it is very fast in execution.
-            <strong>Disdvantages of First-Fit Memory Allocation:</strong> <br>
-            It wastes a lot of memory. The processor ignores if the size of partition 
-            allocated to the job is very large as compared to the size of job or not. It just 
-            allocates the memory. As a result, a lot of memory is wasted and many jobs 
-            may not get space in the memory, and would have to wait for another job to 
-            complete.
-        </p>
-        <p>
-            <strong>Best-Fit Memory Allocation:</strong> <br>
-            This method keeps the free/busy list in order by size – smallest to largest. In 
-            this method, the operating system first searches the whole of the memory 
-            according to the size of the given job and allocates it to the closest-fitting free 
-            partition in the memory, making it able to use memory efficiently. Here the 
-            jobs are in the order from smallest job to largest job.
-        </p>
-        <img src = "/static/pic/memory_allocation/p4.png">
-        <p>As illustrated in above figure, the operating system first search throughout 
-            the memory and allocates the job to the minimum possible memory partition, 
-            making the memory allocation efficient.<br><br>
-            <strong>Advantages of Best-Fit Allocation :</strong> <br>
-            Memory Efficient. The operating system allocates the job minimum possible 
-            space in the memory, making memory management very efficient. To save 
-            memory from getting wasted, it is the best method.
-            <strong>Disdvantages of Best-Fit Memory Allocation:</strong> <br>
-            It is a Slow Process. Checking the whole memory for each job makes the 
-        working of the operating system very slow. It takes a lot of time to complete 
-        the work.
-        </p>
-        <p>
-            <strong>Worst-Fit Memory Allocation:</strong> <br>
-            In this allocation technique, the process traverses the whole memory and 
-            always search for the largest hole/partition, and then the process is placed in 
-            that hole/partition. It is a slow process because it has to traverse the entire 
-            memory to search the largest hole.
-            Here is an example to understand Worst Fit-Allocation -
-        </p>
-        <img src = "/static/pic/memory_allocation/p5.png">
-        <p>Here Process P1=30K is allocated with the Worst Fit-Allocation technique, so 
-            it traverses the entire memory and selects memory size 400K which is the 
-            largest, and hence there is an internal fragmentation of 370K which is very 
-            large and so many other processes can also utilize this leftover space.<br><br>
-            <strong>Advantages of Worst-Fit Allocation :</strong> <br>
-            Since this process chooses the largest hole/partition, therefore there will be 
-            large internal fragmentation. Now, this internal fragmentation will be quite big 
-            so that other small processes can also be placed in that leftover partition.
-            <strong>Disdvantages of Worst-Fit Memory Allocation:</strong> <br>
-            It is a slow process because it traverses all the partitions in the memory and 
-            then selects the largest partition among all the partitions, which is a time-consuming process.
-        </p>
     </div>
 {% endblock %}
