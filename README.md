@@ -1,5 +1,7 @@
 # OS Simulator
 
+Deployed at https://os-simulator.pranav2305.repl.co/
+
 ## About
 A mini project for CS252 course to simulate the various operating system algorithms.
 
